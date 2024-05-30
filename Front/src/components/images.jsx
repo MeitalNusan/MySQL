@@ -2,23 +2,30 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2"
+import "./Showcss.css"
+ import { MdOutlineEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { IoAdd } from "react-icons/io5";
+
+
+
  
 
-const API = "http://localhost:8000/post/"
-
-export const Show = () => {
-    const [posts, setPosts] = useState([])
+const API2 = "http://localhost:8000/img/"
+ 
+export const Images = () => {
+    const [imgs, setImgs] = useState([])
     const [cargando, setCargando] = useState(true)
 
  
-    const getAllPost= async() =>{
-        const res= await axios.get(API)
-        setPosts(res.data)
+    const getAllImg= async() =>{
+        const res= await axios.get(API2)
+        setImgs(res.data)
     }
 
-    const deletePost = async(id)=>{
-        await axios.delete(`${API}${id}`)
-        getAllPost()
+    const deleteImg = async(id)=>{
+        await axios.delete(`${API2}${id}`)
+        getAllImg()
     }
 
     const confirmarDelete = (id) =>{
@@ -32,7 +39,7 @@ export const Show = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                deletePost(id)
+                deleteImg(id)
               Swal.fire({
                 title: "Eliminado!",
                 text: "Tu documento ha sido eliminado",
@@ -45,41 +52,39 @@ export const Show = () => {
 
     useEffect(()=>{
         setCargando(true)
-        getAllPost()
+        getAllImg()
         setCargando(false)
     },[])
 
-    // if(cargando){
-    //     return <Spinner/>
-    // }
+    if(cargando){
+        return <div>Cargando...</div>
+    }
     return(
        <div className="container">
         <div className="row">
         {/* <Buscador/> */}
-        <small>Create Post </small>
+        <small>Create Image </small>
             <div className="col">     
                 <Link to="/create" className="btn btn-primary mt-2">
-                  <i className="fa-regular fa-plus"></i>     
+                  <i className="btn bt-primary"><IoAdd /></i>     
                 </Link>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Title</th> 
-                            <th>Content</th> 
-                            <th>Actions</th> 
+                            <th>Title</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {posts.map((post=>(
-                            <tr key={post.id}>
-                                <td>{post.title}</td>
-                                <td>{post.content}</td>
+                        {imgs.map((img=>(
+                            <tr key={img.id}>
+                                <td>{img.titulo}</td>
+                                
                                 <td>
-                                    <Link to={`edit/${post.id}`} className="btn btn-primary">
-                                        <i className="fa fa-edit"></i>
-                                    </Link>
-                                    <button className="btn btn-danger" onClick={() => confirmarDelete(post.id)}>
-                                         <i className="fa-solid fa-trash"></i>
+                                    <Link to={`edit/${img.id}`} className="btn btn-primary">
+                                         <MdOutlineEdit />
+                                     </Link>
+                                    <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
+                                          <MdDelete />
                                     </button>
                                 </td>
                             </tr>

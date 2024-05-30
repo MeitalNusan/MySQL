@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import db from "./database/db.js";
 import postRoutes from "./Routes/postRoutes.js"
-
+import imgRoutes from "./Routes/imgRoutes.js"
 
 
 const app = express()
@@ -14,7 +14,8 @@ app.use(express.json())
 
 
 app.use("/post",postRoutes)
-
+app.use("/img",imgRoutes)
+ 
 
 const conexionDb = async() => {
     try {
