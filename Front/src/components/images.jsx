@@ -6,6 +6,8 @@ import "./Showcss.css"
  import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
+import "./imagescss.css"
+
 
 
 
@@ -60,7 +62,7 @@ export const Images = () => {
         return <div>Cargando...</div>
     }
     return(
-       <div className="container">
+       <div className="images">
         <div className="row">
         {/* <Buscador/> */}
         <small>Create Image </small>
@@ -68,7 +70,7 @@ export const Images = () => {
                 <Link to="/create" className="btn btn-primary mt-2">
                   <i className="btn bt-primary"><IoAdd /></i>     
                 </Link>
-                <table className="table">
+                <table>
                     <thead>
                         <tr>
                             <th>Title</th>
