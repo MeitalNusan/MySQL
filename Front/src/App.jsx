@@ -7,8 +7,8 @@ import { Images } from './components/images';
  
 const App = () =>{
   return(
-   <div className="App">
-      <header className="App-header">
+   <div >
+      
         <BrowserRouter>
           <Routes>
              <Route path="/show" element={<Show/>}/>  
@@ -16,7 +16,7 @@ const App = () =>{
              <Route path="/edit/:id" element={<Edit/>}/>  
           </Routes>
         </BrowserRouter>
-      </header>
+      
     </div>
   )
 }
