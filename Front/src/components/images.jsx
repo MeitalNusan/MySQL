@@ -11,12 +11,24 @@ import "./imagescss.css"
 
 
 const API2 = "http://localhost:8000/img/"
+
+
  
 export const Images = () => {
+    const [file, setFile] = useState(null)
+    
+    const selectedHandler = (e) => {
+        setFile(e.target.files[0])
 
-    const selectHandler = (e) => {
-        console.log(e.target.files[0])
+    }
 
+    const sendHandler = () => {
+        if(!file){
+            alert("You must upload a file")
+            return
+        }
+        const formdata =new FormData()
+        formdata.append("imagen", file) 
     }
     
     return(
@@ -24,11 +36,11 @@ export const Images = () => {
     <div className="row">
         <div className="col">
             <div className="">
-                <input onChange={selectHandler}  className="form-control" type="file" />
+                <input onChange={selectedHandler}  className="form-control" type="file" />
             </div>
 
             <div className="col-2">
-                <button type="button" className="btn btn-danger">Upload</button>
+                <button onClick={sendHandler}  type="button" className="btn btn-danger">Upload</button>
             </div>
         </div>
     </div>
