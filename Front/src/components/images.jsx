@@ -28,22 +28,43 @@ export const Images = () => {
             return
         }
         const formdata =new FormData()
-        formdata.append("imagen", file) 
+        formdata.append("image", file) 
+
+        fetch('http://localhost:8000/img',{
+            method:"POST",
+            body:formdata
+        })
+        .then(res =>res.text())
+        .then(res => console.log(res))
+        .catch(err => {
+            console.error(err)
+        })
+
+        document.getElementById('fileinput').value = null
+
+        setFile(null)
     }
     
     return(
-    <div className="images">
-    <div className="row">
-        <div className="col">
-            <div className="">
-                <input onChange={selectedHandler}  className="form-control" type="file" />
-            </div>
-
-            <div className="col-2">
+    <div className="container mt-5">
+        <div className="card p-3">
+            <div className="row">
+             <div className="col-10">
+                <input id="fileinput" onChange={selectedHandler}  className="form-control" type="file" />
+             </div>
+             <div className="col-2">
                 <button onClick={sendHandler}  type="button" className="btn btn-danger">Upload</button>
-            </div>
+             </div>
+             {/* <div>
+             {file.map((img=>(
+                            <p key={img.id}>
+                                 <img src={img.titulo}/> 
+                                
+                            </p>
+                        )))}
+             </div> */}
+          </div>
         </div>
-    </div>
     </div>
    ) 
     
