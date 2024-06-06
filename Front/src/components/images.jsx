@@ -10,7 +10,7 @@ import "./imagescss.css"
 
 
 
-const API2 = "http://localhost:8000/img/"
+// const API2 = "http://localhost:8000/img/"
 
 
  

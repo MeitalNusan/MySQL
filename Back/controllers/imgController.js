@@ -4,7 +4,7 @@ export const getAllImg = async (req,res) =>{
     try {
         const imgs = await imgModel.findAll()
         res.json(imgs)
-
+ 
     } catch (error) {
         res.json({message:error.message})
     }
