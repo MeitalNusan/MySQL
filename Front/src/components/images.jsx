@@ -58,7 +58,7 @@ export const Images = () => {
              {/* <div>
              {file.map((img=>(
                             <p key={img.id}>
-                                 <img src={img.titulo}/> 
+                                 <p>{img.name}</p>
                                 
                             </p>
                         )))}
