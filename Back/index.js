@@ -3,12 +3,24 @@ import cors from "cors";
 import db from "./database/db.js"; // Asegúrate de que este archivo y configuración sean correctos
 import postRoutes from "./Routes/postRoutes.js";
 import imgRoutes from "./Routes/imgRoutes.js";
+import path from "path"
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+ 
+
+  
 const app = express();
 const port = 8000;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 app.use(cors());
 app.use(express.json());
+const dbImagesPath = path.join(__dirname, 'dbimages');
+app.use(express.static(dbImagesPath));
+
 
 app.use("/post", postRoutes);
 app.use("/img", imgRoutes);

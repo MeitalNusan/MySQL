@@ -11,7 +11,7 @@ import { IoAdd } from "react-icons/io5";
 
  
 
-const API = "http://localhost:8000/img"
+const API = "http://localhost:8000/img/"
  
 export const ShowImages = () => {
     const [imgs, setImgs] = useState([])
@@ -24,7 +24,7 @@ export const ShowImages = () => {
      }
 
     const deleteImg = async(id)=>{
-        await axios.delete(`${API}/${id}`)
+        await axios.delete(`${API}${id}`)
         getAllImgs()
     }
 
@@ -69,21 +69,23 @@ export const ShowImages = () => {
                   <i className="btn bt-primary"><IoAdd /></i>     
                 </Link>
                 
-                    <div>
-                        {imgs.map((img=>(
-                            <div key={img.id}>
-                                <p>{img.name}</p>
-                                  <p>
-                                    <Link to={`edit/${img.id}`} className="btn btn-primary">
-                                         <MdOutlineEdit />
-                                     </Link>
-                                    <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
-                                          <MdDelete />
-                                    </button>
-                                </p>
-                            </div>
-                        )))}
-                    </div>
+                <div>
+                  {imgs.map((img => (
+                      <div key={img}>
+                          <p>{img+name}</p>   
+                          <img src={'http://localhost:8000/' + img} alt="..." />
+                          <p>
+                              <Link to={`edit/${img.id}`} className="btn btn-primary">
+                                  <MdOutlineEdit />
+                              </Link>
+                              <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
+                                  <MdDelete />
+                              </button>
+                          </p>
+                      </div>
+                  )))}
+</div>
+
              </div>
         </div>
        </div>
