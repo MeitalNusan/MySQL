@@ -48,17 +48,17 @@ export const updateImg =async (req, res) =>{
     }
 }
 
-export const deleteImg= async (req, res) =>{
-    try {
-        await Image.destroy({
-        where:{id:req.params.id}, //si no funciona, probar sacando esta coma
-        })
-        res.json({
-            "message": "registro eliminado correctamente"
-        })
+// export const deleteImg= async (req, res) =>{
+//     try {
+//         await Image.destroy({
+//         where:{id:req.params.id}, //si no funciona, probar sacando esta coma
+//         })
+//         res.json({
+//             "message": "registro eliminado correctamente"
+//         })
         
-    } catch (error) {
-        res.json({message:error.message})
+//     } catch (error) {
+//         res.json({message:error.message})
         
-    }
-}
+//     }
+// }

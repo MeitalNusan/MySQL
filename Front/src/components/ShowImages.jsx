@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2"
-import "./Showcss.css"
+import "./showImgcss.css"
  import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
@@ -60,37 +60,36 @@ export const ShowImages = () => {
     //     return <Spinner/>
     // }
     return(
-       <div className="container">
-        <div className="row">
-        {/* <Buscador/> */}
-        <small>Create Img </small>
-            <div className="col">     
-                <Link to="/create" className="btn btn-primary mt-2">
-                  <i className="btn bt-primary"><IoAdd /></i>     
-                </Link>
-                
-                <div>
-                  {imgs.map((img => (
-                      <div key={img}>
-                          <p>{img+name}</p>   
-                          <img src={'http://localhost:8000/' + img} alt="..." />
-                          <p>
-                              <Link to={`edit/${img.id}`} className="btn btn-primary">
-                                  <MdOutlineEdit />
-                              </Link>
-                              <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
-                                  <MdDelete />
-                              </button>
-                          </p>
-                      </div>
-                  )))}
-</div>
 
-             </div>
-        </div>
-       </div>
+        <div className="conteiner">  
+                <div className="titulos">
+                    <h1 className="title1">Always</h1> 
+                    <h1 className="title2">El garage</h1> 
+                </div>
+                 <section className="table">
+                        {imgs.map((img => (
+                        <div  key={img.id}>
+                          
+                          <img
+                                className="img"
+                                src={URL.createObjectURL(new Blob([Uint8Array.from(img.data.data)]), { type: img.type })}
+                                alt={img.name}
+                            />
+                            <p>
+                                <Link to={`edit/${img.id}`} className="btn btn-primary">
+                                    <MdOutlineEdit />
+                                </Link>
+                                <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
+                                    <MdDelete />
+                                </button>
+                            </p>
+                        </div>
+                    )))}
+                   </section>
+            </div>
+     
     ) 
-    
+        
 }
 
 
