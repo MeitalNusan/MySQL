@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2"
 import "./Showcss.css"
- import { MdOutlineEdit } from "react-icons/md";
+import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
+import {Buscador} from "./Buscador"
+import { Spinner } from "./Spinner";
 
 
 
@@ -56,13 +58,13 @@ export const Show = () => {
         setCargando(false)
     },[])
 
-    // if(cargando){
-    //     return <Spinner/>
-    // }
+    if(cargando){
+        return <Spinner/>
+    }
     return(
        <div className="container">
         <div className="row">
-        {/* <Buscador/> */}
+        <Buscador/>
         <small>Create Post </small>
             <div className="col">     
                 <Link to="/create" className="btn btn-primary mt-2">
@@ -82,7 +84,7 @@ export const Show = () => {
                                 <td>{post.title}</td>
                                 <td>{post.content}</td>
                                 <td>
-                                    <Link to={`edit/${post.id}`} className="btn btn-primary">
+                                    <Link to={`/edit/${post.id}`} className="btn btn-primary">
                                          <MdOutlineEdit />
                                      </Link>
                                     <button className="btn btn-danger" onClick={() => confirmarDelete(post.id)}>

@@ -33,20 +33,20 @@ import Image from "../models/imgModel.js"
 //     }
 // }
 
-export const updateImg =async (req, res) =>{
-    try {
+// export const updateImg =async (req, res) =>{
+//     try {
        
-        await Image.update(req.body,{
-            where:{id:req.params.id}
-        })
-        res.json({
-            "message": "registro modificado correctamente"
-        })
-    } catch (error) {
-        res.json({message:error.message})
+//         await Image.update(req.body,{
+//             where:{id:req.params.id}
+//         })
+//         res.json({
+//             "message": "registro modificado correctamente"
+//         })
+//     } catch (error) {
+//         res.json({message:error.message})
         
-    }
-}
+//     }
+// }
 
 // export const deleteImg= async (req, res) =>{
 //     try {

@@ -1,0 +1,31 @@
+.containerBuscador{
+    display: flex;
+    justify-content: center;
+}
+
+.cajaBuscador{
+    position: relative;
+}
+
+
+
+.inputBuscador{
+    height: 50px;
+     border-radius: 10px;
+     background-color: white;
+     color:black;
+     font-size: large;
+     padding: 5px 30px 5px 10px;
+}
+
+
+.botonBuscador{
+    position: absolute;
+    right: 0;
+    top:0;
+    cursor:pointer;
+    height: 100%;
+    border:none;
+    background: none;
+    color: black;
+ }

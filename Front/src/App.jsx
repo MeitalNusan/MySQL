@@ -1,26 +1,37 @@
-import './App.css'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { Show } from './components/Show';
-import Edit from './components/Edit';
-import { Images } from './components/images';
-import { ShowImages } from './components/ShowImages';
+import { Layout } from './components/Layout';
+import { Images } from './components/Images/images';
+import { EditImg } from './components/Images/EditImg';
+import { Edit } from './components/Edit';
+import {ShowImages} from './components/Images/ShowImages'
+import {Card} from "./components/Card"
 
- 
-const App = () =>{
-  return(
-   <div >
-      
+
+
+const queryClient = new QueryClient();
+
+const App = () => {
+  return (
+    <div>
+      <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-             <Route path="/show" element={<Show/>}/>  
-             <Route path="/img" element={<Images/>}/>  
-             <Route path="/edit/:id" element={<Edit/>}/>  
-             <Route path="/showimg" element={<ShowImages/>}/>  
+          <Route element={<Layout/>}>
+            <Route path="/show" element={<Show />} />
+            <Route path="/img" element={<Images />} />
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route path="/showimg" element={<ShowImages />} />
+            <Route path="/editImg/:id" element={<EditImg />} />             
+            <Route path="/card/:id" element={<Card />} />             
+            </Route>
           </Routes>
         </BrowserRouter>
-      
+      </QueryClientProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

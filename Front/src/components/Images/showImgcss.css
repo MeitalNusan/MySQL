@@ -1,0 +1,47 @@
+.table{
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,280px);
+    gap:120px;
+    padding: 30px;
+    background-color: white;
+  }
+  .buscador{
+    width: 100%;
+    display: flex;
+    flex-direction:initial;
+    justify-content:space-between;
+  }
+
+  .img{
+    width: 360px;
+    height: 340px;
+    border-radius: 6%;
+    border-style: double;
+  }
+
+ 
+.titulos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title1{
+  padding: 20px;
+  font-size: 50px;
+  margin-bottom: 40px;
+  font-style: oblique;
+  color:darkslategrey;
+}
+.title2{
+  padding: 20px;
+  font-size: 50px;
+  margin-bottom: 40px;
+  font-style: oblique;
+  color:darkslategrey;
+}
+
+.car{
+  margin-top: 60px;
+}

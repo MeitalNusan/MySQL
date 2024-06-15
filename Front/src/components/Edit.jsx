@@ -3,9 +3,9 @@ import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 
-// import { Spinner } from "./Spinner"
+import { Spinner } from "./Spinner"
 
-const Edit = ()=>{
+export const Edit = ()=>{
     const [titulo, setTitulo] = useState("")
     const [contenido, setContenido] = useState("")
     const [cargando, setCargando] = useState(true)
@@ -32,9 +32,9 @@ const Edit = ()=>{
      },[])
 
 
-    // if(cargando){
-    //     return <Spinner/>
-    // }
+    if(cargando){
+        return <Spinner/>
+    }
      
 
     const update = async (e)=>{
@@ -43,7 +43,7 @@ const Edit = ()=>{
             title:titulo,
             content:contenido,
         })
-        navigate("/")
+        navigate("/show")
     }
 
     return(
@@ -72,5 +72,4 @@ const Edit = ()=>{
     )
     
 }
-
-export default Edit
+ 

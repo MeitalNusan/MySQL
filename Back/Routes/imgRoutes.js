@@ -28,7 +28,6 @@ const fileUpload = multer({
     storage: diskstorage
 }).single('image');
 
-
 router.get("/", async (req, res) => {
     try {
         const images = await Image.findAll();
@@ -39,47 +38,48 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/images/:filename", (req, res) => {
-    const { filename } = req.params;
-    const filePath = path.join(__dirname, "./images/" + filename);
-    res.sendFile(filePath);
-});
-
-
-
-router.post("/", fileUpload, async (req, res) => {
-    if (!req.file) {
-        return res.status(400).send("No se ha subido ningún archivo.");
-    }
+router.get("/:id", async (req, res) => {
+    const { id } = req.params;
 
     try {
-        const { mimetype, originalname, filename } = req.file;
-        const data = fs.readFileSync(path.join(__dirname, "./images/" + filename));
-
-        await Image.create({ type: mimetype, name: originalname, data });
-
-        res.send("¡Imagen guardada exitosamente!");
+        const image = await Image.findByPk(id);
+        if (!image) {
+            return res.status(404).json({ message: "No se encontró la imagen." });
+        }
+        res.json(image);
     } catch (err) {
-        console.error("Error al guardar la imagen en la base de datos:", err);
-        res.status(500).send("Error del servidor: no se pudo guardar la imagen en la base de datos.");
+        console.error("Error al obtener la imagen:", err);
+        res.status(500).send("Error del servidor: no se pudo obtener la imagen.");
     }
 });
 
+router.put("/:id", fileUpload, async (req, res) => {
+    const { id } = req.params;
 
-
-
-router.delete("/:id", async (req, res) => {
     try {
-        await Image.destroy({
-        where:{id:req.params.id}, //si no funciona, probar sacando esta coma
-        })
-        res.json({
-            "message": "registro eliminado correctamente"
-        })
-        
-    } catch (error) {
-        res.json({message:error.message})
-        
+        const { name } = req.body;
+        const updateData = { name };
+
+        if (req.file) {
+            const { mimetype, originalname, filename } = req.file;
+            const data = fs.readFileSync(path.join(__dirname, "./images/" + filename));
+            updateData.type = mimetype;
+            updateData.name = originalname;
+            updateData.data = data;
+        }
+
+        const result = await Image.update(updateData, {
+            where: { id },
+        });
+
+        if (result[0] === 0) {
+            return res.status(404).json({ message: "No se encontró la imagen para actualizar." });
+        }
+
+        res.json({ message: "Imagen actualizada correctamente." });
+    } catch (err) {
+        console.error("Error al actualizar la imagen:", err);
+        res.status(500).send("Error del servidor: no se pudo actualizar la imagen.");
     }
 });
 
