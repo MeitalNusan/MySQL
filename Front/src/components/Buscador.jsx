@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { Spinner } from "./Spinner";
+import "./buscador.css"
 
 export const Buscador = () => {
     const fetchImages = async () => {

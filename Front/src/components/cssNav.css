@@ -1,0 +1,44 @@
+/*..................NAV...................*/
+
+.nav-container{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    /* z-index: 1000;   */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;  
+  }
+
+  .botones{
+    text-decoration: none; 
+    display: flex;
+    gap:10px;
+    font-size:larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 10px;
+    color:white;
+  }
+   .garage{
+    text-decoration: none;
+    
+   }
+  .title1{
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 40px;
+    font-style: oblique;
+    color:darkslategrey;
+   
+  }
+  .title2{
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 40px;
+    font-style: oblique;
+    color:darkslategrey;
+  }
+
+  
+   

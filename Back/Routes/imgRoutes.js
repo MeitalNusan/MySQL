@@ -67,7 +67,7 @@ router.post("/", fileUpload, async (req, res) => {
             data: data
         });
 
-        res.json({ message: "Imagen subida correctamente.", image: newImage });
+        res.json({ message: "Imagen subida correctamente."});
     } catch (err) {
         console.error("Error al subir la imagen:", err);
         res.status(500).send("Error del servidor: no se pudo subir la imagen.");

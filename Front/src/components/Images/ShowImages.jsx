@@ -1,14 +1,14 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import Swal from "sweetalert2"
 import "../Images/showImgcss.css"
  import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
-import {Buscador} from "../Buscador"
-import { Spinner } from "../Spinner";
- 
+ import { Spinner } from "../Spinner";
+import Modal from "react-modal"
+  
 
 
  
@@ -18,10 +18,32 @@ const API = "http://localhost:8000/img/"
 export const ShowImages = () => {
     const [imgs, setImgs] = useState([])
     const [cargando, setCargando] = useState(true)
+    // const [modalIsOpen, setmodalIsOpen] = useState(false)
+    // const [currentImage, setCurrentImage] = useState(null)  
 
  
+
+    // Modal.setAppElement('body')
+
+
+    const location = useLocation();
+    
+    const searchParams = new URLSearchParams(location.search);
+    const searchTerm = searchParams.get("search");
+
+
+    const useQuery = () =>{
+        const location = useLocation()
+        return new URLSearchParams(useLocation.search)
+    }
+
+    const query = useQuery()
+    const search = query.get("search")
+    
     const getAllImgs= async() =>{
-        const res= await axios.get(API)
+        const searchURL = search ? `http://localhost:8000/img/${search}` : 'http://localhost:8000/img';
+       
+        const res= await axios.get(searchURL)
         setImgs(res.data)
      }
 
@@ -61,13 +83,21 @@ export const ShowImages = () => {
     if(cargando){
         return <Spinner/>
     }
+
+
+    const modalHandler = (isOpen,image) => {
+        setmodalIsOpen(isOpen)
+        setCurrentImage(image)
+    }
+
+
     return(
 
         <div className="conteiner">  
-                <div className="titulos">
+                {/* <div className="titulos">
                     <h1 className="title1">Always</h1> 
                     <h1 className="title2">El garage</h1> 
-                </div>
+                </div> */}
                  <section className="table">
                         {imgs.map((img => (
                         <div  key={img.id}>
@@ -89,10 +119,26 @@ export const ShowImages = () => {
                                 <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
                                     <MdDelete />
                                 </button>
+                                {/* <button onClick={() => modalHandler(true, img.data.data)} className="btn btn-dark">Click to view</button> */}
+
                             </p>
+                            {/* <Modal isOpen={modalIsOpen} onRequestClose={() => modalHandler(false, null)}>
+                                <div className="card">
+                                <img src={URL.createObjectURL(new Blob([Uint8Array.from(img.data.data)]), { type: img.type })} />
+                                <div className="card-body">
+                                    <button className="btn btn-dark">
+                                    delete 
+                                    </button>
+                                </div>
+                                </div>
+                           </Modal> */}
                         </div>
+                        
                     )))}
                    </section>
+
+                   
+
             </div>
      
     ) 

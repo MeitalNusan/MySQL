@@ -2,10 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner } from "./Spinner";
-import Modal from "react-modal"
+import Modal from "react-modal";
+import "./cssCard.css"
 
 export const Card = () => {
-    const [imgs, setImg] = useState({ name: "", image: "" });
+    const [img, setImg] = useState(null); // Cambiado a un solo objeto de imagen en lugar de un array
     const [cargando, setCargando] = useState(true);
 
     const API = "http://localhost:8000/img/";
@@ -15,7 +16,10 @@ export const Card = () => {
     const getImgById = async () => {
         try {
             const respuesta = await axios.get(API + id);
-            setImg(respuesta.data);
+            // Verificar el tipo de respuesta.data y asignar según corresponda
+            if (respuesta.data) {
+                setImg(respuesta.data); // Si es un solo objeto de imagen
+            }
             setCargando(false);
         } catch (error) {
             console.error("Error al obtener la imagen:", error);
@@ -32,18 +36,15 @@ export const Card = () => {
     }
 
     return (
-        <div className="car">
-            <p>{imgs.name}</p>
-            {/* Aquí puedes mostrar la imagen si la tienes */}
-            {imgs.image && (
+        <div className="card">
+           <p> {img && (
                 <img
-                    src={URL.createObjectURL(
-                        new Blob([Uint8Array.from(imgs.image.data)]),
-                        { type:imgs.image.type }
-                    )}
-                    alt={imgs.name}
+                    className="cardImage"
+                    src={URL.createObjectURL(new Blob([Uint8Array.from(img.data.data)]), { type: img.type })}
+                    alt={img.name} 
                 />
-            )}
+            )}</p>
+               <h3>{img.name}</h3>
         </div>
     );
 };
