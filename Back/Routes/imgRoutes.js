@@ -52,6 +52,28 @@ router.get("/:id", async (req, res) => {
         res.status(500).send("Error del servidor: no se pudo obtener la imagen.");
     }
 });
+router.post("/", fileUpload, async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: "No se proporcionó ninguna imagen." });
+        }
+
+        const { mimetype, originalname, filename } = req.file;
+        const data = fs.readFileSync(path.join(__dirname, './images/' + filename));
+
+        const newImage = await Image.create({
+            name: originalname,
+            type: mimetype,
+            data: data
+        });
+
+        res.json({ message: "Imagen subida correctamente.", image: newImage });
+    } catch (err) {
+        console.error("Error al subir la imagen:", err);
+        res.status(500).send("Error del servidor: no se pudo subir la imagen.");
+    }
+});
+
 
 router.put("/:id", fileUpload, async (req, res) => {
     const { id } = req.params;
@@ -80,6 +102,26 @@ router.put("/:id", fileUpload, async (req, res) => {
     } catch (err) {
         console.error("Error al actualizar la imagen:", err);
         res.status(500).send("Error del servidor: no se pudo actualizar la imagen.");
+    }
+});
+
+
+router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const result = await Image.destroy({
+            where: { id },
+        });
+
+        if (result === 0) {
+            return res.status(404).json({ message: "No se encontró la imagen para eliminar." });
+        }
+
+        res.json({ message: "Imagen eliminada correctamente." });
+    } catch (err) {
+        console.error("Error al eliminar la imagen:", err);
+        res.status(500).send("Error del servidor: no se pudo eliminar la imagen.");
     }
 });
 

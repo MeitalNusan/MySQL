@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner } from "./Spinner";
+import Modal from "react-modal"
 
 export const Card = () => {
     const [imgs, setImg] = useState({ name: "", image: "" });
