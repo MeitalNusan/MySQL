@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fs from "fs";
 import Image from "../models/imgModel.js"; // Asegúrate de tener el modelo Image configurado
+import Op from "sequelize"
 
 const router = express.Router();
 
@@ -28,15 +29,36 @@ const fileUpload = multer({
     storage: diskstorage
 }).single('image');
 
+
+
+//TODAS LAS IMAGENES 
+
 router.get("/", async (req, res) => {
     try {
-        const images = await Image.findAll();
+        const search = req.query.search;
+        console.log("Search parameter received:", search);
+
+        let images;
+        if (search) {
+            images = await Image.findAll({
+                where: {
+                    name: {
+                        [Op.like]: `%${search}%`
+                    }
+                }
+            });
+            console.log("Filtered images:", images);
+        } else {
+            images = await Image.findAll();
+        }
+
         res.json(images);
     } catch (err) {
-        console.error("Error al obtener las imágenes:", err);
+        console.error("Error fetching images:", err);
         res.status(500).send("Error del servidor: no se pudieron obtener las imágenes.");
     }
 });
+//UNA IMAGEN
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
@@ -52,6 +74,9 @@ router.get("/:id", async (req, res) => {
         res.status(500).send("Error del servidor: no se pudo obtener la imagen.");
     }
 });
+
+
+//POSTEAR UNA IMAGEN
 router.post("/", fileUpload, async (req, res) => {
     try {
         if (!req.file) {
@@ -74,7 +99,7 @@ router.post("/", fileUpload, async (req, res) => {
     }
 });
 
-
+//EDITAR UNA IMAGEN
 router.put("/:id", fileUpload, async (req, res) => {
     const { id } = req.params;
 
@@ -105,6 +130,8 @@ router.put("/:id", fileUpload, async (req, res) => {
     }
 });
 
+
+//BORRAR UNA IMAGEN
 
 router.delete("/:id", async (req, res) => {
     const { id } = req.params;

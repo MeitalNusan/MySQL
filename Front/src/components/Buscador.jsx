@@ -20,6 +20,7 @@ export const Buscador = () => {
     const { isLoading, error, data } = useQuery('images', fetchImages);
     const navigate = useNavigate();
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate(`/?search=${txtBuscador}`);
@@ -30,22 +31,19 @@ export const Buscador = () => {
 
     return (
         data && data.length > 0 && (
-            <form className="containerBuscador" onSubmit={handleSubmit}>
-                <div className="cajaBuscador">
-                    <input
-                        placeholder="Search for name"
-                        value={txtBuscador}
-                        onChange={(e) => setTxtBuscador(e.target.value)}
-                        type="text"
-                        className="inputBuscador"
-                    />
-                    <button type="submit" className="botonBuscador">
-                        <FaSearch />
-                    </button>
-                </div>
-            </form>
-        )
-    );
+        <form className="containerBuscador" onSubmit={handleSubmit}>
+            <div className="cajaBuscador">
+                <input
+                    placeholder="Search for name"
+                    value={txtBuscador}
+                    onChange={(e) => setTxtBuscador(e.target.value)}
+                    type="text"
+                    className="inputBuscador"
+                />
+                <button type="submit" className="botonBuscador">
+                    <FaSearch />
+                </button>
+            </div>
+        </form>
+    ));
 };
-
- 

@@ -6,10 +6,8 @@ import { Layout } from './components/Layout';
 import { Images } from './components/Images/images';
 import { EditImg } from './components/Images/EditImg';
 import { Edit } from './components/Edit';
-import {ShowImages} from './components/Images/ShowImages'
-import {Card} from "./components/Card"
-
-
+import { ShowImages } from './components/Images/ShowImages';
+import { Card } from "./components/Card";
 
 const queryClient = new QueryClient();
 
@@ -19,13 +17,13 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-          <Route element={<Layout/>}>
-            <Route path="/show" element={<Show />} />
-            <Route path="/img" element={<Images />} />
-            <Route path="/edit/:id" element={<Edit />} />
-            <Route path="/showimg" element={<ShowImages />} />
-            <Route path="/editImg/:id" element={<EditImg />} />             
-            <Route path="/card/:id" element={<Card />} />             
+            <Route element={<Layout />}>
+              <Route path="/show" element={<Show />} />
+              <Route path="/img" element={<Images />} />
+              <Route path="/edit/:id" element={<Edit />} />
+              <Route path="/" element={<ShowImages />} />
+              <Route path="/editImg/:id" element={<EditImg />} />
+              <Route path="/card/:id" element={<Card />} />
             </Route>
           </Routes>
         </BrowserRouter>
