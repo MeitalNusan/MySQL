@@ -15,12 +15,12 @@ export const ShowImages = () => {
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const searchTerm = searchParams.get("search");
+    const search = searchParams.get("search");
 
     const getAllImgs = async () => {
         try {
-            const searchURL = searchTerm ? `${API}?search=${searchTerm}` : API;
-             const res = await axios.get(searchURL);
+            const searchURL = search ? `${API}?search=${search}` : API;
+            const res = await axios.get(searchURL);
             setImgs(res.data);
         } catch (error) {
             console.error("Error fetching images:", error);
@@ -40,19 +40,19 @@ export const ShowImages = () => {
 
     const confirmarDelete = (id) => {
         Swal.fire({
-            title: "Estas seguro?",
-            text: "No se podrá revertir",
+            title: "¿Estás seguro?",
+            text: "No podrás revertir esto",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Sí, eliminarlo!"
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteImg(id);
                 Swal.fire({
                     title: "Eliminado!",
-                    text: "Tu documento ha sido eliminado",
+                    text: "Tu imagen ha sido eliminada",
                     icon: "success"
                 });
             }
@@ -60,9 +60,8 @@ export const ShowImages = () => {
     };
 
     useEffect(() => {
-        setCargando(true);
         getAllImgs();
-    }, [searchTerm]);
+    }, [search]);
 
     if (cargando) {
         return <Spinner />;

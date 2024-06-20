@@ -7,6 +7,7 @@ import { Spinner } from "./Spinner";
 import "./buscador.css"
 
 export const Buscador = () => {
+  
     const fetchImages = async () => {
         try {
             const response = await axios.get("http://localhost:8000/img/");
