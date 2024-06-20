@@ -35,6 +35,17 @@ const fileUpload = multer({
 
 router.get("/", async (req, res) => {
     try {
+        const imgs = await Image.findAll()
+        res.json(imgs)
+
+    } catch (error) {
+        res.json({message:error.message})
+    }
+    
+});
+
+router.get("/", async (req, res) => {
+    try {
         const search = req.query.search;
         console.log("Search parameter received:", search);
 

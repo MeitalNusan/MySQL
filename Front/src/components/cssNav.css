@@ -41,4 +41,20 @@
   }
 
   
-   
+  .inputBuscador{
+    height: 50px;
+     border-radius: 10px;
+     background-color: white;
+     color:black;
+     font-size: large;
+      margin-bottom: 20px;
+}
+
+
+.botonBuscador{
+    position: absolute;
+    cursor:pointer;
+    border:none;
+    background: none;
+    color: black;
+ }

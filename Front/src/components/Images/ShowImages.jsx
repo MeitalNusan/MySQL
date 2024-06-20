@@ -6,8 +6,9 @@ import "../Images/showImgcss.css";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { Spinner } from "../Spinner";
+import { Buscador } from "../Buscador";
 
-const API = "http://localhost:8000/img/";
+const API_URL = "http://localhost:8000/img/";
 
 export const ShowImages = () => {
     const [imgs, setImgs] = useState([]);
@@ -19,7 +20,7 @@ export const ShowImages = () => {
 
     const getAllImgs = async () => {
         try {
-            const searchURL = search ? `${API}?search=${search}` : API;
+            const searchURL = search ? `${API}?search=${search}` : API_URL;
             const res = await axios.get(searchURL);
             setImgs(res.data);
         } catch (error) {
@@ -69,6 +70,7 @@ export const ShowImages = () => {
 
     return (
         <div className="container">
+ 
             <section className="table">
                 {imgs.map((img) => (
                     <div key={img.id}>

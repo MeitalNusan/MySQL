@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { Buscador } from "./Buscador"
 import "./cssNav.css"
 
+const API_URL = "http://localhost:8000/img/";
 export const Nav = () =>{
     return(
         <div className="nav-container">
@@ -11,7 +12,7 @@ export const Nav = () =>{
             </div>
             
             <div className="inputBuscador">
-                 <Buscador/>
+            <Buscador apiUrl={API_URL} placeholder="Buscar imágenes por nombre" queryKey="images" />
             </div>
            
          </div>
