@@ -8,7 +8,7 @@ import { MdDelete } from "react-icons/md";
 import { Spinner } from "../Spinner";
 import { Buscador } from "../Buscador";
 
-const API_URL = "http://localhost:8000/img/";
+const API= "http://localhost:8000/img/";
 
 export const ShowImages = () => {
     const [imgs, setImgs] = useState([]);
@@ -20,7 +20,7 @@ export const ShowImages = () => {
 
     const getAllImgs = async () => {
         try {
-            const searchURL = search ? `${API}?search=${search}` : API_URL;
+            const searchURL = search ? `${API}?search=${search}` : API ;
             const res = await axios.get(searchURL);
             setImgs(res.data);
         } catch (error) {
@@ -70,9 +70,9 @@ export const ShowImages = () => {
 
     return (
         <div className="container">
- 
+            <Buscador apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
             <section className="table">
-                {imgs.map((img) => (
+                {/* {imgs.map((img) => (
                     <div key={img.id}>
                         <Link to={`/card/${img.id}`} className="name">
                             <img
@@ -91,7 +91,7 @@ export const ShowImages = () => {
                             </button>
                         </p>
                     </div>
-                ))}
+                ))} */}
             </section>
         </div>
     );

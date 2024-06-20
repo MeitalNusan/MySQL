@@ -62,9 +62,13 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
                 {filteredData.map((item) => (
                     <div key={item.id} className="itemBusqueda">
                         <p>{item.name}</p>
-                        <img                           
-                         src={URL.createObjectURL(new Blob([Uint8Array.from(item.data.data)]), { type: item.type })}
+                        <p>{item.data  && (
+                            <img
+                                src={URL.createObjectURL(new Blob([Uint8Array.from(item.data.data)]), { type: item.type })}
+                                alt={item.name}
+                                
                             />
+                              )}</p>
                     </div>
                 ))}
             </div>

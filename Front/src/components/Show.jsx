@@ -10,96 +10,69 @@ import {Buscador} from "./Buscador"
 import { Spinner } from "./Spinner";
 
 
+const API= "http://localhost:8000/post/";
 
- 
-
-const API = "http://localhost:8000/post/"
- 
 export const Show = () => {
-    const [posts, setPosts] = useState([])
-    const [cargando, setCargando] = useState(true)
+    const [posts, setPosts] = useState([]);
+    const [cargando, setCargando] = useState(true);
 
- 
-    const getAllPost= async() =>{
-        const res= await axios.get(API)
-        setPosts(res.data)
-    }
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const search = searchParams.get("search");
 
-    const deletePost = async(id)=>{
-        await axios.delete(`${API}${id}`)
-        getAllPost()
-    }
+    const getAllPosts = async () => {
+        try {
+            const searchURL = search ? `${API}?search=${search}` : API;
+            const res = await axios.get(searchURL);
+            setPosts(res.data);
+        } catch (error) {
+            console.error("Error fetching images:", error);
+        } finally {
+            setCargando(false);
+        }
+    };
 
-    const confirmarDelete = (id) =>{
+    const deletePost = async (id) => {
+        try {
+            await axios.delete(`${API}${id}`);
+            getAllPosts();
+        } catch (error) {
+            console.error("Error deleting image:", error);
+        }
+    };
+
+    const confirmarDelete = (id) => {
         Swal.fire({
-            title: "Estas seguro?",
-            text: "No se podrá revertir",
+            title: "¿Estás seguro?",
+            text: "No podrás revertir esto",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+            confirmButtonText: "Sí, eliminarlo!"
+        }).then((result) => {
             if (result.isConfirmed) {
-                deletePost(id)
-              Swal.fire({
-                title: "Eliminado!",
-                text: "Tu documento ha sido eliminado",
-                icon: "success",
-              });
+                deletePost(id);
+                Swal.fire({
+                    title: "Eliminado!",
+                    text: "Tu imagen ha sido eliminada",
+                    icon: "success"
+                });
             }
-          });
-        } 
-    
+        });
+    };
 
-    useEffect(()=>{
-        setCargando(true)
-        getAllPost()
-        setCargando(false)
-    },[])
+    useEffect(() => {
+        getAllPosts();
+    }, [search]);
 
-    if(cargando){
-        return <Spinner/>
+    if (cargando) {
+        return <Spinner />;
     }
-    return(
-       <div className="container">
-        <div className="row">
-        <Buscador/>
-        <small>Create Post </small>
-            <div className="col">     
-                <Link to="/create" className="btn btn-primary mt-2">
-                  <i className="btn bt-primary"><IoAdd /></i>     
-                </Link>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Title</th> 
-                            <th>Content</th> 
-                            <th>Actions</th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {posts.map((post=>(
-                            <tr key={post.id}>
-                                <td>{post.title}</td>
-                                <td>{post.content}</td>
-                                <td>
-                                    <Link to={`/edit/${post.id}`} className="btn btn-primary">
-                                         <MdOutlineEdit />
-                                     </Link>
-                                    <button className="btn btn-danger" onClick={() => confirmarDelete(post.id)}>
-                                          <MdDelete />
-                                    </button>
-                                </td>
-                            </tr>
-                        )))}
-                    </tbody>
-                </table>
-            </div>
+
+    return (
+        <div className="container">
+            <Buscador apiUrl={API}  placeholder={"Buscador"} queryKey={"posts"} />
         </div>
-       </div>
-    ) 
-    
-}
-
-
+    );
+};
