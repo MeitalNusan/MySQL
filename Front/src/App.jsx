@@ -8,6 +8,7 @@ import { EditImg } from './components/Images/EditImg';
 import { Edit } from './components/Edit';
 import { ShowImages } from './components/Images/ShowImages';
 import { Card } from "./components/Card";
+import { BuscadorProvider } from './components/Context/BuscadorContext';
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
+       <BuscadorProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
@@ -27,6 +29,7 @@ const App = () => {
             </Route>
           </Routes>
         </BrowserRouter>
+        </BuscadorProvider> 
       </QueryClientProvider>
     </div>
   );

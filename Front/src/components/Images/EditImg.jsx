@@ -50,7 +50,7 @@ export const EditImg = () => {
                 },
             });
 
-            navigate("/showimg");
+            navigate("/");
         } catch (error) {
             console.error("Error al actualizar la imagen:", error);
             setError("Error al actualizar la imagen. Inténtalo de nuevo más tarde.");

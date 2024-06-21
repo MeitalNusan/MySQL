@@ -30,35 +30,36 @@ export const ShowImages = () => {
         }
     };
 
-    const deleteImg = async (id) => {
-        try {
-            await axios.delete(`${API}${id}`);
-            getAllImgs();
-        } catch (error) {
-            console.error("Error deleting image:", error);
-        }
-    };
+//   const deleteImg = async (id) => {
+//         try {
+//             await axios.delete(`${API}${id}`);
+//             getAllImgs(); // Actualizar imágenes después de eliminar
+//         } catch (error) {
+//             console.error("Error deleting image:", error);
+//         }
+//     };
 
-    const confirmarDelete = (id) => {
-        Swal.fire({
-            title: "¿Estás seguro?",
-            text: "No podrás revertir esto",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Sí, eliminarlo!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                deleteImg(id);
-                Swal.fire({
-                    title: "Eliminado!",
-                    text: "Tu imagen ha sido eliminada",
-                    icon: "success"
-                });
-            }
-        });
-    };
+
+    // const confirmarDelete = (id) => {
+    //     Swal.fire({
+    //         title: "¿Estás seguro?",
+    //         text: "No podrás revertir esto",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Sí, eliminarlo!"
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             deleteImg(id);
+    //             Swal.fire({
+    //                 title: "Eliminado!",
+    //                 text: "Tu imagen ha sido eliminada",
+    //                 icon: "success"
+    //             });
+    //         }
+    //     });
+    // };
 
     useEffect(() => {
         getAllImgs();
@@ -71,17 +72,9 @@ export const ShowImages = () => {
     return (
         <div className="container">
             <Buscador apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
-            <section className="table">
-                {/* {imgs.map((img) => (
+            {/* <section className="table">
+                {imgs.map((img) => (
                     <div key={img.id}>
-                        <Link to={`/card/${img.id}`} className="name">
-                            <img
-                                className="img"
-                                src={URL.createObjectURL(new Blob([Uint8Array.from(img.data.data)]), { type: img.type })}
-                                alt={img.name}
-                            />
-                        </Link>
-                        <p>{img.name}</p>
                         <p>
                             <Link to={`/editImg/${img.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />
@@ -91,8 +84,8 @@ export const ShowImages = () => {
                             </button>
                         </p>
                     </div>
-                ))} */}
-            </section>
+                ))}
+            </section> */}
         </div>
     );
 };
