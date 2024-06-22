@@ -70,22 +70,6 @@ export const ShowImages = () => {
     }
 
     return (
-        <div className="container">
-            <Buscador apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
-            {/* <section className="table">
-                {imgs.map((img) => (
-                    <div key={img.id}>
-                        <p>
-                            <Link to={`/editImg/${img.id}`} className="btn btn-primary">
-                                <MdOutlineEdit />
-                            </Link>
-                            <button className="btn btn-danger" onClick={() => confirmarDelete(img.id)}>
-                                <MdDelete />
-                            </button>
-                        </p>
-                    </div>
-                ))}
-            </section> */}
-        </div>
+        <Buscador  className="buscadorImg" apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
     );
 };

@@ -1,72 +1,147 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./cssNav.css";
 
 export const Nav = () => {
+    // Estado para controlar la visibilidad de los menús desplegables
+    const [mujeresOpen, setMujeresOpen] = useState(false);
+    const [hombresOpen, setHombresOpen] = useState(false);
+    const [marcasOpen, setMarcasOpen] = useState(false);
+    const [crearOpen, setCrearOpen] = useState(false);
+
+    // Funciones para manejar la apertura/cierre de los menús desplegables
+    const toggleMujeres = () => setMujeresOpen(!mujeresOpen);
+    const toggleHombres = () => setHombresOpen(!hombresOpen);
+    const toggleMarcas = () => setMarcasOpen(!marcasOpen);
+    const toggleCrear = () => setCrearOpen(!crearOpen);
+
     return (
-        <div className="nav-container">
-            <nav className="nav1">
-                <div className="item2">
-                    <Link className="tituloHome" to="/">
-                        <h1>ALWAYS</h1>
-                    </Link>
-                </div>
+        <div className="nav">
+            <div className="item2">
+                <Link className="tituloHome" to="/">
+                    <h1>SIEMPRE</h1>
+                </Link>
+            </div>
 
-                <div className="item1">
-                    <div className="dropdown">
-                        <button className="btn btn-dropdown-toggle" type="button" id="dropdownMenuMujeres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mujeres
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuMujeres">
-                            <Link className="dropdown-item" to="/Adidas">Ropa deportiva</Link>
-                            <Link className="dropdown-item" to="/Adidas">Zapatillas</Link>
-                            <Link className="dropdown-item" to="/Adidas">Bikinis</Link>
-                            <Link className="dropdown-item" to="/Adidas">Ropa interior</Link>
-                            <Link className="dropdown-item" to="/Adidas">Botines</Link>
-                            <Link className="dropdown-item" to="/Adidas">Sandalias</Link>
-                        </div>
-                    </div>
-
-                    <div className="dropdown">
-                        <button className="btn btn-dropdown-toggle" type="button" id="dropdownMenuHombres" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hombres
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuHombres">
-                            <Link className="dropdown-item" to="/Adidas">Zapatillas</Link>
-                            <Link className="dropdown-item" to="/Adidas">Ropa deportiva</Link>
-                            <Link className="dropdown-item" to="/Adidas">Mallas</Link>
-                            <Link className="dropdown-item" to="/Adidas">Botines</Link>
-                        </div>
-                    </div>
-
-                    <div className="dropdown">
-                        <button className="btn btn-dropdown-toggle" type="button" id="dropdownMenuMarcas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Marcas
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuMarcas">
-                            <Link className="dropdown-item" to="/Adidas">Adidas</Link>
-                            <Link className="dropdown-item" to="/Adidas">Diadora</Link>
-                            <Link className="dropdown-item" to="/Adidas">Olympikus</Link>
-                            <Link className="dropdown-item" to="/Adidas">New Balance</Link>
-                            <Link className="dropdown-item" to="/Athix">Athix</Link>
-                            <Link className="dropdown-item" to="/Adidas">Fila</Link>
-                        </div>
-                    </div>
-
-                    <div className="dropdown">
-                        <button className="btn btn-dropdown-toggle" type="button" id="dropdownMenuCrear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Crear
-                        </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuCrear">
-                            <Link className="dropdown-item" to="/createHome">Crear Gemelos</Link>
-                            <Link className="dropdown-item" to="/createHome2">Crear Novedad</Link>
-                            <Link className="dropdown-item" to="/createHome3">Crear 3 Novedades</Link>
-                            <Link className="dropdown-item" to="/createHome4">Crear Carousel</Link>
-                            <Link className="dropdown-item" to="/createAdidas">Crear Adidas</Link>
-                            <Link className="dropdown-item" to="/createAthix">Crear Athix</Link>
-                        </div>
+            <div className="item1">
+                <div className="dropdown">
+                    <button
+                        className="btn btn-dropdown-toggle"
+                        type="button"
+                        onClick={toggleMujeres}
+                        aria-expanded={mujeresOpen ? "true" : "false"}
+                    >
+                        Mujeres
+                    </button>
+                    <div className={`dropdown-menu ${mujeresOpen ? "show" : ""}`}>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Ropa deportiva
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Zapatillas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Bikinis
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Ropa interior
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Botines
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Sandalias
+                        </Link>
                     </div>
                 </div>
-            </nav>
+
+                <div className="dropdown">
+                    <button
+                        className="btn btn-dropdown-toggle"
+                        type="button"
+                        onClick={toggleHombres}
+                        aria-expanded={hombresOpen ? "true" : "false"}
+                    >
+                        Hombres
+                    </button>
+                    <div className={`dropdown-menu ${hombresOpen ? "show" : ""}`}>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Zapatillas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Ropa deportiva
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Mallas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Botines
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="dropdown">
+                    <button
+                        className="btn btn-dropdown-toggle"
+                        type="button"
+                        onClick={toggleMarcas}
+                        aria-expanded={marcasOpen ? "true" : "false"}
+                    >
+                        Marcas
+                    </button>
+                    <div className={`dropdown-menu ${marcasOpen ? "show" : ""}`}>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Adidas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Diadora
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Olympikus
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            New Balance
+                        </Link>
+                        <Link className="dropdown-item" to="/Athix">
+                            Athix
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Fila
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="dropdown">
+                    <button
+                        className="btn btn-dropdown-toggle"
+                        type="button"
+                        onClick={toggleCrear}
+                        aria-expanded={crearOpen ? "true" : "false"}
+                    >
+                        Crear
+                    </button>
+                    <div className={`dropdown-menu ${crearOpen ? "show" : ""}`}>
+                        <Link className="dropdown-item" to="/createHome">
+                            Crear Gemelos
+                        </Link>
+                        <Link className="dropdown-item" to="/createHome2">
+                            Crear Novedad
+                        </Link>
+                        <Link className="dropdown-item" to="/createHome3">
+                            Crear 3 Novedades
+                        </Link>
+                        <Link className="dropdown-item" to="/createHome4">
+                            Crear Carrusel
+                        </Link>
+                        <Link className="dropdown-item" to="/createAdidas">
+                            Crear Adidas
+                        </Link>
+                        <Link className="dropdown-item" to="/createAthix">
+                            Crear Athix
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

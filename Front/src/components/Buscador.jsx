@@ -72,9 +72,9 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
     }
 
     return (
-        <div>
-            <form className="containerBuscador" onSubmit={handleSubmit}>
-                <div className="cajaBuscador">
+        <main>
+            <div className="cajaBuscador">
+                 <form onSubmit={handleSubmit}> 
                     <input
                         placeholder={placeholder}
                         value={txtBuscador}
@@ -85,9 +85,9 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
                     <button type="submit" className="botonBuscador">
                         <FaSearch />
                     </button>
-                </div>
-            </form>
-
+                
+                </form>
+            </div>
             <div className="containerResultados">
                 {filteredData.length === 0 && (
                     <p>No se encontraron resultados con ese nombre.</p>
@@ -95,11 +95,13 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
                 {filteredData.map((item) => (
                     <div key={item.id} className="itemBusqueda">
                         <p>{item.name}</p>
-                        <p>
+                        <p >
                             {item.data && (
                                 <img
                                     src={URL.createObjectURL(new Blob([Uint8Array.from(item.data.data)]), { type: item.type })}
                                     alt={item.name}
+                                    className="fotos"
+                                     
                                 />
                             )}
                         </p>
@@ -114,6 +116,7 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
                     </div>
                 ))}
             </div>
-        </div>
+        
+        </main>
     );
 };
