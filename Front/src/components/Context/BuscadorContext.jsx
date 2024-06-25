@@ -16,7 +16,7 @@ export const BuscadorProvider = ({ children }) => {
   };
 
   return (
-    <BuscadorContext.Provider value={{ updateBuscadorValues, updateBuscadorValues }}>
+    <BuscadorContext.Provider value={{ updateBuscadorValues}}>
       {children}
     </BuscadorContext.Provider>
   );
