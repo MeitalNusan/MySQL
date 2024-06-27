@@ -19,7 +19,7 @@ export const Nav = () => {
         <div className="nav">
             <div className="item2">
                 <Link className="tituloHome" to="/">
-                    <h1>SIEMPRE</h1>
+                    <h1>ALWAYS</h1>
                 </Link>
             </div>
 
