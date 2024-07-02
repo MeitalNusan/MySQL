@@ -18,7 +18,7 @@ export const Nav = () => {
     return (
         <div className="nav">
             <div className="item2">
-                <Link className="tituloHome" to="/">
+                <Link className="tituloHome" to="/show">
                     <h1>ALWAYS</h1>
                 </Link>
             </div>
