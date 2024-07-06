@@ -6,15 +6,15 @@
   /* min-height: 100vh; */
   font-family:Georgia, 'Times New Roman', Times, serif;
   width: 100%;
-  height: 100%;
-  background:linear-gradient(to right,rgb(120,110, 110),rgba(0, 0, 0, 0.580),rgba(0, 0, 0, 0.636)); 
-
+  /* background:linear-gradient(to right,rgb(110,110, 110),rgba(0, 0, 0, 0.418),rgba(0, 0, 0, 0.26));  */
+    
  }
 
   /*.........BODY........*/
    
 body{
-  filter: grayscale(70%);
+  filter: grayscale(80%);
+  
   /* background:linear-gradient(to right,rgb(120,110, 110),rgba(0, 0, 0, 0.580),rgba(0, 0, 0, 0.636));  */
  
   }

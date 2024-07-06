@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useQuery, useQueryClient } from "react-query";
 import Swal from "sweetalert2";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
 import { Spinner } from "./Spinner";
 import "./buscador.css";
+import { Link } from "react-router-dom";
 
 export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
     const [txtBuscador, setTxtBuscador] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
     const queryClient = useQueryClient();
 
     const fetchImages = async () => {
@@ -26,9 +28,7 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (txtBuscador.trim() !== '') {
-            navigate(`/?search=${encodeURIComponent(txtBuscador)}`);
-        }
+        navigate(`/?search=${encodeURIComponent(txtBuscador)}`);
     };
 
     const deleteItem = async (id) => {
@@ -64,11 +64,13 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
     if (isLoading) return <Spinner />;
     if (error) return <div>Error: {error.message}</div>;
 
-    let filteredData = data || []; // Por defecto, todos los datos
+    let filteredData = data || []; 
+    
+    const searchParams = new URLSearchParams(location.search);
+    const search = searchParams.get("search");
 
-    // Filtrar datos si hay un término de búsqueda
-    if (txtBuscador.trim() !== '') {
-        filteredData = data.filter(item => item.name.toLowerCase().includes(txtBuscador.toLowerCase()));
+    if (search) {
+        filteredData = data.filter(item => item.name && item.name.toLowerCase().includes(search.toLowerCase()));
     }
 
     return (
@@ -95,13 +97,14 @@ export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
                 {filteredData.map((item) => (
                     <div key={item.id} className="itemBusqueda">
                         <p>{item.name}</p>
-                        <p >
+                        <p>{item.title}</p>
+                        <p>{item.content}</p>
+                        <p>
                             {item.data && (
                                 <img
                                     src={URL.createObjectURL(new Blob([Uint8Array.from(item.data.data)]), { type: item.type })}
                                     alt={item.name}
                                     className="fotos"
-                                     
                                 />
                             )}
                         </p>

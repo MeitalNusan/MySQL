@@ -23,6 +23,14 @@ export const Nav = () => {
                 </Link>
             </div>
 
+            <div className="dropdown"> 
+                        <div className={`dropdown-menu ${crearOpen ? "show" : ""}`}>
+                           <Link to="/home"> Home
+                            </Link>  
+                            
+                        </div>
+                    </div>
+
             <div className="item1">
                 <div className="dropdown">
                     <button
@@ -121,24 +129,10 @@ export const Nav = () => {
                         Crear
                     </button>
                     <div className={`dropdown-menu ${crearOpen ? "show" : ""}`}>
-                        <Link className="dropdown-item" to="/createHome">
+                        <Link className="dropdown-item" to="/create">
                             Crear Gemelos
                         </Link>
-                        <Link className="dropdown-item" to="/createHome2">
-                            Crear Novedad
-                        </Link>
-                        <Link className="dropdown-item" to="/createHome3">
-                            Crear 3 Novedades
-                        </Link>
-                        <Link className="dropdown-item" to="/createHome4">
-                            Crear Carrusel
-                        </Link>
-                        <Link className="dropdown-item" to="/createAdidas">
-                            Crear Adidas
-                        </Link>
-                        <Link className="dropdown-item" to="/createAthix">
-                            Crear Athix
-                        </Link>
+                        
                     </div>
                 </div>
             </div>

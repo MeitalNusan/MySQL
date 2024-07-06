@@ -3,6 +3,7 @@ import cors from "cors";
 import db from "./database/db.js"; // Asegúrate de que este archivo y configuración sean correctos
 import postRoutes from "./Routes/postRoutes.js";
 import imgRoutes from "./Routes/imgRoutes.js";
+import homeImgRoutes from "./Routes/homeImgRoutes.js";
 import path from "path"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -24,6 +25,7 @@ app.use(express.static(dbImagesPath));
 
 app.use("/post", postRoutes);
 app.use("/img", imgRoutes);
+app.use("/homeImg", homeImgRoutes);
 
 const conexionDb = async () => {
     try {

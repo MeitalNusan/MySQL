@@ -10,6 +10,7 @@ import { ShowImages } from './components/Images/ShowImages';
 import { Card } from "./components/Card";
 import { BuscadorProvider } from './components/Context/BuscadorContext';
 import { Home } from './components/Home/home';
+import { Create } from './components/Create';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/editImg/:id" element={<EditImg />} />
               <Route path="/card/:id" element={<Card />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/create" element={<Create />} />
             </Route>
           </Routes>
         </BrowserRouter>

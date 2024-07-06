@@ -70,6 +70,10 @@ export const ShowImages = () => {
     }
 
     return (
-        <Buscador  className="buscadorImg" apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
+        <div>
+            <Buscador  className="buscadorImg" apiUrl={API}  placeholder={"Buscador"} queryKey={"images"} />
+        </div>
+        
+        
     );
 };

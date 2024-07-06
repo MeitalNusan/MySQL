@@ -12,33 +12,128 @@ import lionel from "../Images/imagenes/lionel.jpg"
 import zapaOl from"../Images/imagenes/zapaOlymcomp.png"
  
 
-const API= "http://localhost:8000/img/";
+const API= "http://localhost:8000/homeImg/";
 
 export const Home = () => {
-   
+  const [file, setFile] = useState(null)
+  const [cargando, setCargando] = useState(true);
+
+    
+  const selectedHandler = (e) => {
+      setFile(e.target.files[0])
+
+  }
+
+  const sendHandler = () => {
+      if(!file){
+          alert("You must upload a file")
+          return
+      }
+      const formdata =new FormData()
+      formdata.append("image", file) 
+
+      fetch('http://localhost:8000/homeImg',{
+          method:"POST",
+          body:formdata
+      })
+      .then(res =>res.text())
+      .then(res => console.log(res))
+      .catch(err => {
+          console.error(err)
+      })
+
+      document.getElementById('fileinput').value = null
+
+      setFile(null)
+  }
+  const getAllPost = async () => {
+    try {
+        const searchURL = API
+        const res = await axios.get(searchURL);
+        setFile(res.data);
+    } catch (error) {
+        console.error("Error fetching images:", error);
+    } finally {
+        setCargando(false);
+    }
+};
+  const deletePost = async (id) => {
+      try {
+          await axios.delete(`${API}${id}`);
+          getAllPost();
+      } catch (error) {
+          console.error("Error deleting image:", error);
+      }
+  };
+
+  const confirmarDelete = (id) =>{
+    Swal.fire({
+        title: "Estas seguro?",
+        text: "No se podrá revertir",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            deletePost(id)
+          Swal.fire({
+            title: "Eliminado!",
+            text: "Tu documento ha sido eliminado",
+            icon: "success",
+          });
+        }
+      });
+    } 
+
+
+useEffect(()=>{
+    setCargando(true);
+     getAllPost()
+ },[])
+
+if(cargando){
+    return <Spinner/>
+}
+
     return (
    <main>
-       <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src={zapaNB} class="d-block w-100"/>
-              </div>
-              <div class="carousel-item">
-                <img src={lionel} class="d-block w-100" />
-              </div>
-              <div class="carousel-item">
-                <img src={zapaOl} class="d-block w-100" />
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-      </div>
+     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src={zapaNB} class="d-block w-100" alt="First slide"/>
+    </div>
+    <div class="carousel-item">
+      <img src={lionel} class="d-block w-100" alt="Second slide"/>
+    </div>
+    <div class="carousel-item">
+      <img src={zapaOl} class="d-block w-100" alt="Third slide" />
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </button>
+</div>
+
+        <div>
+        <div>
+             {file.map((img=>(
+                            <p key={img.id}>
+                               <img
+                                    src={URL.createObjectURL(new Blob([Uint8Array.from(img.data.data)]), { type: img.type })}
+                                    className="fotos"
+                                     
+                                />
+                            </p>
+                        )))}
+             </div>
+        </div>
 
       <div className="conteiner3">
          <div className="numero2">
