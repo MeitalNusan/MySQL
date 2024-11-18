@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
-import { Buscador } from "./Buscador";
+import { Buscador } from "./Buscador"; 
 import { Spinner } from "./Spinner";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";

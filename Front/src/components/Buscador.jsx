@@ -9,6 +9,7 @@ import { Spinner } from "./Spinner";
 import "./buscador.css";
 import { Link } from "react-router-dom";
 
+
 export const Buscador = ({ apiUrl, placeholder, queryKey }) => {
     const [txtBuscador, setTxtBuscador] = useState('');
     const navigate = useNavigate();

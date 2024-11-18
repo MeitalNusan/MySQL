@@ -32,7 +32,8 @@ export const Nav = () => {
                     </div>
 
             <div className="item1">
-                <div className="dropdown">
+                
+                {/* <div className="dropdown">
                     <button
                         className="btn btn-dropdown-toggle"
                         type="button"
@@ -61,34 +62,27 @@ export const Nav = () => {
                             Sandalias
                         </Link>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="dropdown">
-                    <button
-                        className="btn btn-dropdown-toggle"
-                        type="button"
-                        onClick={toggleHombres}
-                        aria-expanded={hombresOpen ? "true" : "false"}
-                    >
-                        Hombres
-                    </button>
-                    <div className={`dropdown-menu ${hombresOpen ? "show" : ""}`}>
-                        <Link className="dropdown-item" to="/Adidas">
-                            Zapatillas
-                        </Link>
-                        <Link className="dropdown-item" to="/Adidas">
-                            Ropa deportiva
-                        </Link>
-                        <Link className="dropdown-item" to="/Adidas">
-                            Mallas
-                        </Link>
-                        <Link className="dropdown-item" to="/Adidas">
-                            Botines
-                        </Link>
+
+                    <div className="dropdown">
+                        <button
+                            className="btn btn-dropdown-toggle"
+                            type="button"
+                            onClick={toggleCrear}
+                            aria-expanded={crearOpen ? "true" : "false"}
+                        >
+                            Crear
+                        </button>
+                        <div className={`dropdown-menu ${crearOpen ? "show" : ""}`}>
+                            <Link className="dropdown-item" to="/create">
+                                Crear Gemelos
+                            </Link>
+                        
                     </div>
                 </div>
 
-                <div className="dropdown">
+                 <div className="dropdown">
                     <button
                         className="btn btn-dropdown-toggle"
                         type="button"
@@ -119,22 +113,49 @@ export const Nav = () => {
                     </div>
                 </div>
 
+
+                 
+
                 <div className="dropdown">
                     <button
                         className="btn btn-dropdown-toggle"
                         type="button"
-                        onClick={toggleCrear}
-                        aria-expanded={crearOpen ? "true" : "false"}
                     >
-                        Crear
+                        <Link className="dropdown-item" to="/nosotros">Nosotros</Link>
                     </button>
-                    <div className={`dropdown-menu ${crearOpen ? "show" : ""}`}>
-                        <Link className="dropdown-item" to="/create">
-                            Crear Gemelos
-                        </Link>
-                        
-                    </div>
+                    
                 </div>
+                
+
+                {/* <div className="dropdown">
+                    <button
+                        className="btn btn-dropdown-toggle"
+                        type="button"
+                        onClick={toggleHombres}
+                        aria-expanded={hombresOpen ? "true" : "false"}
+                    >
+                        Hombres
+                    </button>
+                    <div className={`dropdown-menu ${hombresOpen ? "show" : ""}`}>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Zapatillas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Ropa deportiva
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Mallas
+                        </Link>
+                        <Link className="dropdown-item" to="/Adidas">
+                            Botines
+                        </Link>
+                    </div>
+                </div> */}
+                
+
+                
+
+                
             </div>
         </div>
     );

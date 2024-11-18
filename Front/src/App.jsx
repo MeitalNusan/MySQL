@@ -8,9 +8,10 @@ import { EditImg } from './components/Images/EditImg';
 import { Edit } from './components/Edit';
 import { ShowImages } from './components/Images/ShowImages';
 import { Card } from "./components/Card";
-import { BuscadorProvider } from './components/Context/BuscadorContext';
-import { Home } from './components/Home/home';
+ import { Home } from './components/Home/home';
 import { Create } from './components/Create';
+import { CrearMellis } from './components/Mellis/crearMellis';
+import { DeleteImgHome } from './components/Home/deleteImgHome';
 
 const queryClient = new QueryClient();
 
@@ -18,22 +19,24 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-       <BuscadorProvider>
+       
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
               <Route path="/show" element={<Show />} />
               <Route path="/img" element={<Images />} />
               <Route path="/edit/:id" element={<Edit />} />
-              <Route path="/" element={<ShowImages />} />
+              <Route path="/showImg" element={<ShowImages />} />
               <Route path="/editImg/:id" element={<EditImg />} />
               <Route path="/card/:id" element={<Card />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/create" element={<Create />} />
+              <Route path="/createMellis" element={<CrearMellis/>} />
+              <Route path="/deleteImgHome/:id" element={<DeleteImgHome/>} />
             </Route>
           </Routes>
         </BrowserRouter>
-        </BuscadorProvider> 
+        
       </QueryClientProvider>
     </div>
   );
