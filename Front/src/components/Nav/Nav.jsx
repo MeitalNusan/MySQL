@@ -12,7 +12,7 @@ export const Nav = () => {
     return (
         <div className="nav">
             <div className="item2">
-                <Link className="tituloHome" to="/show">
+                <Link className="tituloHome" to="/">
                     <h1>ALWAYS</h1>
                 </Link>
             </div>
@@ -37,6 +37,13 @@ export const Nav = () => {
                                 Crear Mellis
                             </Link>
                         
+                            <Link className="dropdown-item" to="/createAdidas">
+                                Crear Adidas
+                            </Link>
+                            <Link className="dropdown-item" to="/createFila">
+                                Crear Fila
+                            </Link>
+                        
                     </div>
                 </div>
 
@@ -53,19 +60,19 @@ export const Nav = () => {
                         <Link className="dropdown-item" to="/Adidas">
                             Adidas
                         </Link>
-                        <Link className="dropdown-item" to="/Adidas">
+                        <Link className="dropdown-item" to="/Di">
                             Diadora
                         </Link>
-                        <Link className="dropdown-item" to="/Adidas">
+                        <Link className="dropdown-item" to="/Olympikus">
                             Olympikus
                         </Link>
-                        <Link className="dropdown-item" to="/Adidas">
+                        <Link className="dropdown-item" to="/NewBalance">
                             New Balance
                         </Link>
                         <Link className="dropdown-item" to="/Athix">
                             Athix
                         </Link>
-                        <Link className="dropdown-item" to="/Adidas">
+                        <Link className="dropdown-item" to="/Fila">
                             Fila
                         </Link>
                     </div>

@@ -5,6 +5,12 @@ import postRoutes from "./Routes/postRoutes.js";
 import imgRoutes from "./Routes/imgRoutes.js";
 import homeImgRoutes from "./Routes/homeImgRoutes.js";
 import mellisImg from "./Routes/mellisImg.js"
+import adidas from "./Routes/adidas.js"
+import fila from "./Routes/fila.js"
+import olyimpikus from "./Routes/olympikus.js"
+import newb from "./Routes/newb.js"
+import athix from "./Routes/athix.js"
+import diadora from "./Routes/diadora.js"
 import path from "path"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -28,6 +34,12 @@ app.use("/post", postRoutes);
 app.use("/img", imgRoutes);
 app.use("/homeImg", homeImgRoutes);
 app.use("/mellisImg", mellisImg);
+app.use("/adidas", adidas);
+app.use("/fila", fila);
+app.use("/olyimpikus", olyimpikus);
+app.use("/newb", newb);
+app.use("/athix", athix);
+app.use("/diadora", diadora);
 
 const conexionDb = async () => {
     try {

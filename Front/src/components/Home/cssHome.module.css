@@ -32,6 +32,18 @@
 
 
  } 
+/* ......ADIDAS......*/
+
+.conteinerAdidas{
+  margin-top: 100px;
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);  
+  gap: 156px;
+  padding: 20px;  
+  margin-left: 80px; 
+}
 /* ......  ......*/
 
   .conteiner3 {
@@ -50,7 +62,7 @@
     width: 400px;
     height: 300px;
     border-radius: 10%;
-
+ 
    }
 
 
@@ -69,11 +81,11 @@
     height: 100%;
     object-fit: cover;  
   }
-  
+/*   
   img {
-    /* filter: grayscale(60%); */
+    filter: grayscale(60%);
   }
-  
+   */
    
   .conteinerGroup {
     width: 100%;
