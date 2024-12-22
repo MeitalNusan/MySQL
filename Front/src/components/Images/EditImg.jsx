@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Spinner } from "../Spinner";
+import { Spinner } from "../spinner/Spinner";
 
 export const EditImg = () => {
     const [titulo, setTitulo] = useState("");

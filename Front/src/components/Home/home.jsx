@@ -1,21 +1,19 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import Swal from "sweetalert2";
 import styles from "../Home/cssHome.module.css";
- import { Spinner } from "../Spinner";
+import { Spinner } from "../spinner/Spinner";
 import zapaNB from "../Images/imagenes/zapaNB.jpg"
 import lionel from "../Images/imagenes/lionel.jpg"
 import zapaOl from"../Images/imagenes/zapaOlymcomp.png"
-import { Mellis } from "../Mellis/Mellis";
-import { MdOutlineEdit, MdDelete } from "react-icons/md";
-
+import { GetAllImg } from "../getImgs/getAllImg";
+import { FotosGral } from "../fotosGeneral/fotosGral";
+import { Mellis } from "../FotosMellis/MellisGral";
 
  
 const API= "http://localhost:8000/homeImg/";
 
 export const Home = () => {
-  const [file, setFile] = useState([])
+  const [file, setFile] = useState([]) 
   const [cargando, setCargando] = useState(true);
 
     
@@ -30,39 +28,8 @@ export const Home = () => {
         setCargando(false);
     }
 };
-  const deletePost = async (id) => {
-      try {
-          await axios.delete(`${API}${id}`);
-          getAllPost();
-      } catch (error) {
-          console.error("Error deleting image:", error);
-      }
-  };
 
-    
-
-  const confirmarDelete = (id) =>{
-    Swal.fire({
-        title: "Estas seguro?",
-        text: "No se podrá revertir",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-            deletePost(id)
-          Swal.fire({
-            title: "Eliminado!",
-            text: "Tu documento ha sido eliminado",
-            icon: "success",
-          });
-        }
-      });
-    } 
-
-    
+  
 
 useEffect(()=>{
     setCargando(true);
@@ -100,43 +67,25 @@ if(cargando){
 </section>
        
 
+        <br /><br />
+    <div className={styles.zapa}>
+  <button className={styles.boton}> "DESCUBRÍ MAS →" </button>
+    <GetAllImg apiEndpoint="http://localhost:8000/homeImg/"/>
+
+    <br /><br /><br /><br />
+   </div>
+    
+
+   <br /><br /><br /><br />
+
+   <Mellis apiEndpoint="http://localhost:8000/mellisImg/"/>
   
-     {/*  <div className={styles.conteiner3}>
-         <div className="numero2">
-          <Link  to="/" ><img className='img2' src={lionel} alt="" /></Link>
-          </div>
-          <div className="numero2">
-          <Link  to="/" ><img className='img2' src={zapaNB} alt="" /></Link>
-          </div>
-          <div className="numero2">
-          <Link  to="/" ><img className='img2' src={zapaOl} alt="" /></Link>
-          </div>
-           
-          
-        </div> */}
-        
-        <div>
-        <Mellis className={styles.descubre} title="Ver Más">
-      {file.map((foto) => (
-        <div key={foto.id}> 
-          <Link to="#">
-            <img
-              src={URL.createObjectURL(new Blob([Uint8Array.from(foto.data.data)], { type: foto.type }))}
-              className="fotos"
-              alt={`Foto ${foto.id}`} // Reemplaza con una descripción adecuada
-            />
-          </Link>
-          <button className="btn btn-danger" onClick={() => confirmarDelete(foto.id)}>
-                <MdDelete />
-          </button>
-        </div>
-      ))}
-    </Mellis>
-</div> 
-<div>
-  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   <div>
+     <FotosGral apiEndpoint="http://localhost:8000/img/"/>
+   </div>
+
+
   
-</div>
 
   
 </>

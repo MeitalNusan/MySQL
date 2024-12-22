@@ -1,6 +1,9 @@
 // import imgModel from "../models/imgModel.js"
 import Image from "../models/imgModel.js"
 
+
+
+
 // export const getAllImg = async (req,res) =>{
 //     try {
 //         const imgs = await Image.findAll()

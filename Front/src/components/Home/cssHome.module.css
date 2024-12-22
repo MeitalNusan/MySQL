@@ -1,25 +1,61 @@
   .carousel {
-    height: 1600px; 
-    opacity: 0.6;
+    height: 1430px; 
+    /* opacity: 0.3; */
     width: 100%;
     position: relative;
     overflow: hidden;
-    margin-bottom: 100px;
   }
    
-   
-   
+/* ...... DESCUBRI MAS ......*/
+
+  .zapa {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    margin-bottom: 70px;
+  }
+
+   .fotos{
+    width: 550px;
+    height: 350px;
+    border-radius: 2%;
+   }
+
+   .boton{
+    width: 340px;
+    height: 120px;
+    background-color: brown;
+    color: white;
+    border-radius: 4%;
+    margin-top: 86px;
+
+
+
+ } 
+/* ......  ......*/
+
   .conteiner3 {
+    margin-top: 200px;
     height: auto;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 280px);  
-    gap: 80px;
-    padding: 30px;
-    background-color: white;
-    justify-content: center;  
+    gap: 156px;
+    padding: 20px;  
+    margin-left: 80px; 
   }
   
+
+  .fotosGral{
+    width: 400px;
+    height: 300px;
+    border-radius: 10%;
+
+   }
+
+
+
+  /*.................*/
   .numero2 {
     width: 340px;  
     height: 100%; 
@@ -35,7 +71,7 @@
   }
   
   img {
-    filter: grayscale(60%);
+    /* filter: grayscale(60%); */
   }
   
    
@@ -54,13 +90,7 @@
     height: 610px;
   }
   
-   
-  .zapa {
-    background-color: white;
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-evenly;
-  }
+    
   
    
   .imgzapa {
@@ -77,11 +107,7 @@
     padding: 20px;
   }
   
-   .boton {
-    width: 260px;
-    height: 80px;
-    margin-top: 100px;
-  }
+   
   
    .createHome {
     display: flex;

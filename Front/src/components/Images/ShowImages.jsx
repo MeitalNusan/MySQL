@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import "../Images/showImgcss.css";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { Spinner } from "../Spinner";
-import { Buscador } from "../Buscador";
+import { Spinner } from "../spinner/Spinner";
+// import { Buscador } from "../Buscador";
 
 const API= "http://localhost:8000/img/";
 

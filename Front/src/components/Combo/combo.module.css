@@ -1,0 +1,9 @@
+.conteiner{
+    margin-left: 50px;
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,230px);
+    gap:100px;
+    justify-content: center;
+}

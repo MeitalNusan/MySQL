@@ -4,6 +4,7 @@ import db from "./database/db.js"; // Asegúrate de que este archivo y configura
 import postRoutes from "./Routes/postRoutes.js";
 import imgRoutes from "./Routes/imgRoutes.js";
 import homeImgRoutes from "./Routes/homeImgRoutes.js";
+import mellisImg from "./Routes/mellisImg.js"
 import path from "path"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -26,6 +27,7 @@ app.use(express.static(dbImagesPath));
 app.use("/post", postRoutes);
 app.use("/img", imgRoutes);
 app.use("/homeImg", homeImgRoutes);
+app.use("/mellisImg", mellisImg);
 
 const conexionDb = async () => {
     try {
