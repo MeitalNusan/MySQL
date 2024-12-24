@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../database/db.js";
 
-const Olympikus = db.define('db_always', {
+const Carrousel = db.define('db_always', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -20,8 +20,8 @@ const Olympikus = db.define('db_always', {
         allowNull: false
     }
 }, {
-    tableName: 'olympikus',
+    tableName: 'carrousel',
     timestamps: false
 });
 
-export default Olympikus;
+export default Carrousel;

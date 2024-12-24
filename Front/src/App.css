@@ -13,9 +13,9 @@ body {
   background-image: url("../src/components/Images/imagenes/short.jpg");
   background-repeat: no-repeat;   
   background-size: cover;        
-  background-position: center;  
+  background-position: center 0px;  
   background-attachment: fixed;  
-  /* filter: grayscale(80%);         */
+  filter: grayscale(60%);        
   height: 100%;                  
   margin: 0;       
              

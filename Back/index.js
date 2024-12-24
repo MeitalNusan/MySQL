@@ -7,10 +7,11 @@ import homeImgRoutes from "./Routes/homeImgRoutes.js";
 import mellisImg from "./Routes/mellisImg.js"
 import adidas from "./Routes/adidas.js"
 import fila from "./Routes/fila.js"
-import olyimpikus from "./Routes/olympikus.js"
+import olympikus from "./Routes/olympikus.js"
 import newb from "./Routes/newb.js"
 import athix from "./Routes/athix.js"
 import diadora from "./Routes/diadora.js"
+import carrousel from "./Routes/carrousel.js"
 import path from "path"
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -36,10 +37,13 @@ app.use("/homeImg", homeImgRoutes);
 app.use("/mellisImg", mellisImg);
 app.use("/adidas", adidas);
 app.use("/fila", fila);
-app.use("/olyimpikus", olyimpikus);
+app.use("/olympikus", olympikus);
 app.use("/newb", newb);
 app.use("/athix", athix);
 app.use("/diadora", diadora);
+app.use("/carrousel", carrousel);
+
+
 
 const conexionDb = async () => {
     try {

@@ -1,71 +1,94 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MdDelete, MdOutlineEdit } from "react-icons/md";  
-import styles from "../../components/Home/cssHome.module.css"
-import { deleteImgHome } from "../../components/Delete/deleteImgHome";
+import styles from "../../components/Home/cssHome.module.css";
+
 
 export const Adidas = () => {
     const [images, setImages] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate()
   
     useEffect(() => {
-      const fetchImages = async () => {
-        try {
-          const response = await axios.get("http://localhost:8000/adidas/");
-          setImages(response.data);  
-        } catch (error) {
-          console.error("Error fetching images:", error);
-          setError("Error fetching images");  
-        } finally {
-          setLoading(false);  
-        }
-      };
+        const fetchImages = async () => {
+            try {
+                const response = await axios.get("http://localhost:8000/adidas/");
+                setImages(response.data);  
+            } catch (error) {
+                console.error("Error fetching images:", error);
+                setError("Error fetching images");  
+            } finally {
+                setLoading(false);  
+            }
+        };
   
-      fetchImages();
+        fetchImages();
     }, []);
   
     if (loading) {
-      return <div>Loading images...</div>;
+        return <div>Loading images...</div>;
     }
   
     if (error) {
-      return <div>Error: {error}</div>;
+        return <div>Error: {error}</div>;
     }
   
     if (images.length === 0) {
-      return <div>No images found</div>;
+        return <div>No images found</div>;
     }
   
-    //Eliminar
-    const handleDelete = (id) => {
-        deleteImgHome(apiEndpoint, id, updateImagesList); 
-      };
-    //Actualiza lista despues de eliminar la foto
-      const updateImagesList = () => {
+     const deleteImgHome = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:8000/adidas/${id}`);
+            console.log("Image deleted:", response.data);
+        } catch (error) {
+            console.error("Error deleting image:", error);
+            throw error; 
+        }
+    };
+     const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar esta imagen?");
+
+        if (confirmDelete) {
+            try {
+                await deleteImgHome(id);  
+                updateImagesList(id);  
+                navigate("/adidas")
+            } catch (error) {
+                console.error("Error deleting image:", error);
+            }
+        } else {
+            console.log("Imagen no eliminada.");
+         }
+    };
+
+     const updateImagesList = (id) => {
         setImages((prevImages) => prevImages.filter(image => image.id !== id));
     };
   
     return (
-      <div className={styles.conteinerAdidas}>
-        {images.map((foto) => (
-          <div key={foto.id}>
-            <Link to="#">
-              <img
-                 src={URL.createObjectURL(new Blob([Uint8Array.from(foto.data.data)], { type: foto.type }))}
-                 className={styles.fotosGral}
-                alt={`Foto ${foto.id}`}  
-              />
-            </Link>
-            <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
-              <MdDelete /> 
-            </button>
-            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
-              <MdOutlineEdit />  
-            </Link>
-          </div>
-        ))}
-      </div>
+        <div className={styles.conteinerAdidas}>
+            {images.map((foto) => (
+                <div key={foto.id}>
+                    <Link to="#">
+                        <img
+                            src={URL.createObjectURL(new Blob([Uint8Array.from(foto.data.data)], { type: foto.type }))} 
+                            className={styles.fotosGral}
+                            alt={`Foto ${foto.id}`}  
+                        />
+                    </Link>
+                    <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
+                        <MdDelete /> 
+                    </button>
+                    <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                        <MdOutlineEdit />  
+                    </Link>
+                </div>
+            ))}
+        </div>
     );
-  };
+};

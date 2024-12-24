@@ -43,6 +43,21 @@ export const Nav = () => {
                             <Link className="dropdown-item" to="/createFila">
                                 Crear Fila
                             </Link>
+                            <Link className="dropdown-item" to="/CreateCarrousel">
+                                Crear Carrousel
+                            </Link>
+                            <Link className="dropdown-item" to="/createAthix">
+                                Crear Athix
+                            </Link>
+                            <Link className="dropdown-item" to="/createDiadora">
+                                Crear Diadora
+                            </Link>
+                            <Link className="dropdown-item" to="/createNB">
+                                Crear NewBalance
+                            </Link>
+                            <Link className="dropdown-item" to="/createOlymp">
+                                Crear Olympikus
+                            </Link>
                         
                     </div>
                 </div>
@@ -60,13 +75,13 @@ export const Nav = () => {
                         <Link className="dropdown-item" to="/Adidas">
                             Adidas
                         </Link>
-                        <Link className="dropdown-item" to="/Di">
+                        <Link className="dropdown-item" to="/Diadora">
                             Diadora
                         </Link>
                         <Link className="dropdown-item" to="/Olympikus">
                             Olympikus
                         </Link>
-                        <Link className="dropdown-item" to="/NewBalance">
+                        <Link className="dropdown-item" to="/Newb">
                             New Balance
                         </Link>
                         <Link className="dropdown-item" to="/Athix">

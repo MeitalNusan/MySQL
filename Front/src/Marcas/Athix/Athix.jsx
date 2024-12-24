@@ -6,7 +6,7 @@ import { MdDelete, MdOutlineEdit } from "react-icons/md";
 import styles from "../../components/Home/cssHome.module.css";
 
 
-export const Fila = () => {
+export const Athix = () => {
     const [images, setImages] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ export const Fila = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/fila/");
+                const response = await axios.get("http://localhost:8000/athix/");
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -43,7 +43,7 @@ export const Fila = () => {
   
      const deleteImgHome = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/fila/${id}`);
+            const response = await axios.delete(`http://localhost:8000/athix/${id}`);
             console.log("Image deleted:", response.data);
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -57,7 +57,7 @@ export const Fila = () => {
             try {
                 await deleteImgHome(id);  
                 updateImagesList(id);  
-                navigate("/fila")
+                navigate("/athix")
             } catch (error) {
                 console.error("Error deleting image:", error);
             }
@@ -84,7 +84,7 @@ export const Fila = () => {
                     <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                         <MdDelete /> 
                     </button>
-                    <Link to={`/editFila/${foto.id}`} className="btn btn-primary">
+                    <Link to={`/editAthix/${foto.id}`} className="btn btn-primary">
                         <MdOutlineEdit />  
                     </Link>
                 </div>
