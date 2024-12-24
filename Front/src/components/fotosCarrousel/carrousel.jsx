@@ -4,11 +4,14 @@ import { MdDelete, MdOutlineEdit } from "react-icons/md";
 import styles from "../fotosCarrousel/cssCarrou.module.css";
 import { deleteImgHome } from "../Delete/deleteImgHome";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Hooks/AuthContext";
 
 export const Carrousel = ({ apiEndpoint }) => {
   const [images, setImages] = useState([]);  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { user } = useAuth();
+  
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -59,17 +62,20 @@ export const Carrousel = ({ apiEndpoint }) => {
                 className={styles.fotos} 
                 alt={`Foto ${foto.id}`}  
               />
-              <div className={styles.botones}>
-                 <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
-                <MdDelete /> 
-              </button>
-              <Link to={`/editCarrousel/${foto.id}`} className="btn btn-primary">
-                <MdOutlineEdit />  
-              </Link>
+               <div/>
+                 { user && user.isAdmin && (
+                        <div className={styles.botones} >
+                            <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
+                                <MdDelete /> 
+                            </button>
+                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                                <MdOutlineEdit />  
+                            </Link>
+                        </div>
+                    )}
               </div>
              
-            </div>
-              
+               
             </>
           ))}
         </div>

@@ -31,7 +31,11 @@ import { EditOlympikus } from './Marcas/Olympikus/editOlympikus';
 import { NewBalance } from './Marcas/Newbalance/NewBalance';
 import { EditNB } from './Marcas/Newbalance/EditNB';
 import { CreateNB } from './Marcas/Newbalance/CreateNB';
+import PrivateRoute from './Hooks/PrivateRoute';
+import { AuthProvider } from './Hooks/AuthContext';
 
+import {Login} from "./login/login"
+import AdminDashboard from './AdminDashboard';
 
 const queryClient = new QueryClient();
 
@@ -39,44 +43,169 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-       
+      <AuthProvider> 
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
-              <Route path="/img" element={<Images />} />
-              <Route path="/editImg/:id" element={<EditImg />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/create" element={<CreateGeneral/>} />
-              <Route path="/createMellis" element={<CreateMellis/>} />            
-              <Route path="/deleteImgHome/:id" element={<deleteImgHome/>} />
+              {/* <Route path="/img" element={<Images />} />
+              <Route path="/editImg/:id" element={<EditImg />} /> 
+               <Route path="/adminDash" element={<AdminDashboard />} /> */}
+
+            
+              {/* <Route path="/deleteImgHome/:id" element={<deleteImgHome/>} />
               <Route path="/editHome/:id" element={<EditGral/>} />
-              <Route path="/editDescub/:id" element={<EditDescub/>} />
-              <Route path="/editMellis/:id" element={<EditMellis/>} />
+              <Route path="/editDescub/:id" element={<EditDescub/>} /> */}
+
+              <Route path="/" element={<Home />} />  
+              <Route path="/login" element={<Login />} />
               <Route path="/nosotros" element={<Nosotros/>} />
               <Route path="/adidas" element={<Adidas/>} />
-              <Route path="/createAdidas" element={<CreateAdidas/>} />
-              <Route path="/editAdidas/:id" element={<EditAdidas/>} />
-              <Route path="/fila" element={<Fila/>} />
-              <Route path="/createFila" element={<CreateFila/>} />
-              <Route path="/editFila/:id" element={<EditFila/>} />
-              <Route path="/CreateCarrousel" element={<CreateCarrousel/>} />
-              <Route path="/editCarrousel/:id" element={<EditCarrousel/>} />
-              <Route path="/athix" element={<Athix/>} />
-              <Route path="/editAthix/:id" element={<EditAthix/>} />
-              <Route path="/createAthix" element={<CreateAthix/>} />
-              <Route path="/diadora" element={<Diadora/>} />
-              <Route path="/editDiadora/:id" element={<EditDiadora/>} />
-              <Route path="/createDiadora" element={<CreateDiadora/>} />
-              <Route path="/Olympikus" element={<Olympikus/>} />
-              <Route path="/createOlymp" element={<CreateOlympikus/>} />
-              <Route path="/editOlympikus/:id" element={<EditOlympikus/>} />
-              <Route path="/newb" element={<NewBalance/>} />
-              <Route path="/editNB/:id" element={<EditNB/>} />
-              <Route path="/createNB" element={<CreateNB/>} />
+              <Route 
+              path="/createMellis"
+               element={
+                <PrivateRoute> 
+                  <CreateMellis/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/create"
+               element={
+                <PrivateRoute> 
+                  <CreateGeneral/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editMellis/:id"
+               element={
+                <PrivateRoute> 
+                  <EditMellis/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createAdidas"
+               element={
+                <PrivateRoute> 
+                  <CreateAdidas/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editAdidas/:id"
+               element={
+                <PrivateRoute> 
+                  <EditAdidas/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createFila"
+               element={
+                <PrivateRoute> 
+                  <CreateFila/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editFila/:id"
+               element={
+                <PrivateRoute> 
+                  <EditFila/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/CreateCarrousel"
+               element={
+                <PrivateRoute> 
+                  <CreateCarrousel/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editCarrousel/:id"
+               element={
+                <PrivateRoute> 
+                  <EditCarrousel/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editAthix/:id"
+               element={
+                <PrivateRoute> 
+                  <EditAthix/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createAthix"
+               element={
+                <PrivateRoute> 
+                  <CreateAthix/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editDiadora/:id"
+               element={
+                <PrivateRoute> 
+                  <EditDiadora/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createDiadora"
+               element={
+                <PrivateRoute> 
+                  <CreateDiadora/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createOlymp"
+               element={
+                <PrivateRoute> 
+                  <CreateOlympikus/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editOlympikus/:id"
+               element={
+                <PrivateRoute> 
+                  <EditOlympikus/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editNB/:id"
+               element={
+                <PrivateRoute> 
+                  <EditNB/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/createNB"
+               element={
+                <PrivateRoute> 
+                  <CreateNB/>
+                </PrivateRoute>
+              } 
+              />
+
+               <Route path="/fila" element={<Fila/>} />
+               <Route path="/athix" element={<Athix/>} />
+               <Route path="/diadora" element={<Diadora/>} />
+               <Route path="/Olympikus" element={<Olympikus/>} />
+               <Route path="/newb" element={<NewBalance/>} />
             </Route>
           </Routes>
         </BrowserRouter>
-        
+        </AuthProvider>
       </QueryClientProvider>
     </div>
   );

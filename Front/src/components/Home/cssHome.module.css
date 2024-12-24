@@ -135,8 +135,8 @@
   }
 
 
-  /*.........CREAR.......*/
+  /*.........cerrar sesion.......*/
 
-  .crear{
-    
-  }
+  .cerrar{
+    display: flex;
+   }

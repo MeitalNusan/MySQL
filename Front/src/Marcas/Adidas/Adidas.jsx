@@ -4,12 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MdDelete, MdOutlineEdit } from "react-icons/md";  
 import styles from "../../components/Home/cssHome.module.css";
+import { useAuth } from '../../Hooks/AuthContext';  // Importa el hook useAuth
+
 
 
 export const Adidas = () => {
     const [images, setImages] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useAuth();
+
 
     const navigate = useNavigate()
   
@@ -81,12 +85,16 @@ export const Adidas = () => {
                             alt={`Foto ${foto.id}`}  
                         />
                     </Link>
-                    <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
-                        <MdDelete /> 
-                    </button>
-                    <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
-                        <MdOutlineEdit />  
-                    </Link>
+                    {user && user.isAdmin && (
+                        <>
+                            <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
+                                <MdDelete /> 
+                            </button>
+                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                                <MdOutlineEdit />  
+                            </Link>
+                        </>
+                    )}
                 </div>
             ))}
         </div>

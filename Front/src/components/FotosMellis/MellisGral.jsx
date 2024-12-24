@@ -3,13 +3,16 @@ import axios from "axios";
 import { MdDelete, MdOutlineEdit } from "react-icons/md";  
 import styles from "../FotosMellis/cssMellis.module.css";
 import { deleteImgHome } from "../Delete/deleteImgHome";
- import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../Hooks/AuthContext";
 
 
 export const Mellis = ({ apiEndpoint }) => {
     const [images, setImages] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useAuth();
+    
   
     useEffect(() => {
         const fetchImages = async () => {
@@ -58,12 +61,16 @@ export const Mellis = ({ apiEndpoint }) => {
                         
                     />
                     <div>
-                    <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
-                        <MdDelete /> 
-                    </button>
-                    <Link to={`/editMellis/${foto.id}`} className="btn btn-primary">
-                         <MdOutlineEdit />  
-                    </Link>
+                    {user && user.isAdmin && (
+                        <>
+                            <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
+                                <MdDelete /> 
+                            </button>
+                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                                <MdOutlineEdit />  
+                            </Link>
+                        </>
+                    )}
                     </div>
                    
                 </div>

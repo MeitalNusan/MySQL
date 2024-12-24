@@ -17,9 +17,9 @@ export const Footer = () => {
 
            <div className={styles.redes}>
                 <a className={styles.i} href="https://www.instagram.com/"><i class='bx bxl-instagram-alt' ></i></a>
-                <a className={styles.w} href="https://www.whatsapp.com/"><i class='bx bxl-whatsapp'></i></a>
-                <a className={styles.t} href="https://www.twitter.com/"><i class='bx bxl-twitter'></i></a>
-           </div>
+                 <a className={styles.w} href="https://www.whatsapp.com/"><i class='bx bxl-whatsapp'></i></a>
+                 {/*  <a className={styles.t} href="https://www.twitter.com/"><i class='bx bxl-twitter'></i></a>*/}
+           </div> 
         </footer>
         
     )

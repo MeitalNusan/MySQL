@@ -4,12 +4,15 @@ import { MdDelete, MdOutlineEdit } from "react-icons/md";
 import styles from "../Home/cssHome.module.css";
 import { deleteImgHome } from "../Delete/deleteImgHome";
  import { Link } from "react-router-dom";
+ import { useAuth } from "../../Hooks/AuthContext";
 
 
 export const FotosGral = ({ apiEndpoint }) => {
     const [images, setImages] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { user } = useAuth();
+    
   
     useEffect(() => {
         const fetchImages = async () => {
@@ -56,12 +59,16 @@ export const FotosGral = ({ apiEndpoint }) => {
                         className={styles.fotosGral}
                         alt={`Foto ${foto.id}`}  
                     />
-                    <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
-                        <MdDelete /> 
-                    </button>
-                    <Link to={`/editHome/${foto.id}`} className="btn btn-primary">
-                         <MdOutlineEdit />  
-                    </Link>
+                   {user && user.isAdmin && (
+                        <>
+                            <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
+                                <MdDelete /> 
+                            </button>
+                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                                <MdOutlineEdit />  
+                            </Link>
+                        </>
+                    )}
                 </div>
             ))}
         </div>
