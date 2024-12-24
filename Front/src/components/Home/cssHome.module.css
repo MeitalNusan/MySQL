@@ -1,0 +1,142 @@
+  .carousel {
+    height: 1430px; 
+    /* opacity: 0.3; */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+   
+/* ...... DESCUBRI MAS ......*/
+
+  .zapa {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+    margin-bottom: 140px;
+    margin-top: 100px;
+  }
+
+   .fotos{
+    width: 550px;
+    height: 350px;
+    border-radius: 2%;
+   }
+
+   .boton{
+    width: 340px;
+    height: 120px;
+    background-color: brown;
+    color: white;
+    border-radius: 4%;
+    margin-top: 86px;
+
+
+
+ } 
+/* ......ADIDAS......*/
+
+.conteinerAdidas{
+  margin-top: 100px;
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);  
+  gap: 156px;
+  padding: 20px;  
+  margin-left: 80px; 
+}
+/* ......  ......*/
+
+  .conteiner3 {
+    margin-top: 160px;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);  
+    gap: 160px;
+    padding: 100px;
+
+  }
+  
+
+  .fotosGral{
+    width: 400px;
+    height: 300px;
+    border-radius: 10%;
+ 
+   }
+
+
+
+  /*.................*/
+  .numero2 {
+    width: 340px;  
+    height: 100%; 
+    border-color: rgb(128, 128, 128);
+    display: flex;
+    justify-content: center;  
+  }
+  
+  .img2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+  }
+/*   
+  img {
+    filter: grayscale(60%);
+  }
+   */
+   
+  .conteinerGroup {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px);
+    gap: 160px;
+    justify-content: center;
+    background-color: white;
+  }
+  
+   
+  .numero {
+    width: 50%;
+    height: 610px;
+  }
+  
+    
+  
+   
+  .imgzapa {
+    width: 600px;
+    height: 400px;
+    padding: 50px;
+  }
+  
+   .conteiner2 {
+    background-color: white;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 20px;
+  }
+  
+   
+  
+   .createHome {
+    display: flex;
+    padding-top: 150px;
+    margin-bottom: 500px;
+  }
+  
+  .mellis{
+    margin-top: 100px;
+    display: flex;
+
+  }
+
+
+  /*.........cerrar sesion.......*/
+
+  .cerrar{
+    display: flex;
+   }

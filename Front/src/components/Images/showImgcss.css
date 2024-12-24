@@ -1,0 +1,9 @@
+  .Buscador{
+    height: 50px;
+    width: 100%;
+    background-color: green;
+    display: flex;
+    justify-content: end;
+    
+  }
+  

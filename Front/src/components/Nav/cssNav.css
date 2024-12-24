@@ -1,0 +1,51 @@
+
+.nav{
+  position: relative;
+  width: 100%; 
+  background-color: rgba(0, 0, 0, 0.062);    /* z-index: 1000;   */
+  display: flex;
+  justify-content: space-between;
+  padding: 26px ;   
+}
+
+.item1{
+  display: flex;
+  gap:100px;
+  margin-right: 20px;
+  color:black;
+}
+.item2{
+  margin-left: 20px;  
+   
+}
+
+
+.tituloHome{
+   text-decoration: none;
+  /* filter: grayscale(90%); */
+  color:aliceblue;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: oblique;
+  
+}
+
+.tituloHome:hover{
+  color:brown;
+  text-decoration: none;
+ }
+
+
+
+.botones{
+  text-decoration: none; 
+  font-size:larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 10px;
+  color:white;
+}
+
+.botones:hover{
+  color:rgba(255, 255, 255, 0.384);
+  text-decoration: none;
+ }
+ 

@@ -1,0 +1,38 @@
+.footer{
+    margin-top:180px;
+     height: 1px;
+    
+    
+}
+
+.politicas{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+}
+.politica{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+  }
+
+.i, .w, .t{
+    font-size: 26px;
+    color:black;
+    margin-top: 80px;
+  }
+  .i:hover{
+    color:rgba(160, 76, 160, 0.685);
+   }
+  .w:hover{
+    color:green;
+   }
+  .t:hover{
+    color:rgba(0, 0, 255, 0.521);
+   }
