@@ -27,7 +27,7 @@ const __dirname = dirname(__filename);
 
 app.use(cors());
 app.use(express.json());
-const dbImagesPath = path.join(__dirname, 'dbimages');
+const dbImagesPath = path.join(__dirname, 'images');
 app.use(express.static(dbImagesPath));
 
 
