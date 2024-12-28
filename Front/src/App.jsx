@@ -35,7 +35,6 @@ import PrivateRoute from './Hooks/PrivateRoute';
 import { AuthProvider } from './Hooks/AuthContext';
 
 import {Login} from "./login/login"
-import AdminDashboard from './AdminDashboard';
 
 const queryClient = new QueryClient();
 

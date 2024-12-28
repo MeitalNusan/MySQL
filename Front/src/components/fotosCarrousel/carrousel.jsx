@@ -65,6 +65,7 @@ export const Carrousel = ({ apiEndpoint }) => {
                <div/>
                  { user && user.isAdmin && (
                         <div className={styles.botones} >
+                          <br /><br /><br /><br />
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>

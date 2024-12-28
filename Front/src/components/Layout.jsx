@@ -23,6 +23,7 @@ export const Layout = () => {
             {/* Si hay un usuario logueado, mostramos el botón de logout */}
             {user && (
                 <div>
+                    <br /><br /><br /><br /><br /><br />
                     <span>Welcome, {user.username}</span>  {/* Mostramos el nombre del usuario */}
                     <button onClick={handleLogout}>Logout</button>  {/* Botón de logout */}
                 </div>

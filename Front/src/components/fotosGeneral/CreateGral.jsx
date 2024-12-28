@@ -44,6 +44,7 @@ export const CreateGeneral= () => {
     
     return(
     <div className="container mt-5">
+        <br /><br /><br /><br />
         <div className="card p-3">
             <div className="row">
              <div className="col-10">

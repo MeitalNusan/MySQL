@@ -31,18 +31,26 @@
     margin-top: 86px;
     text-decoration: none;
  } 
-/* ......ADIDAS......*/
+/* ......Fotos de las marcas......*/
 
 .conteinerAdidas{
   margin-top: 120px; /* Ajusta este valor según la altura de tu nav */
   height: auto;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 280px);  
-  gap: 156px;
-  padding: 20px;  
-  margin-left: 80px;
+  display: flex;
+ margin-left: 80px;
 }
+
+
+
+
+.fotosGral {
+  width: 400px;
+  height: 300px;
+  border-radius: 10%;
+  box-sizing: border-box; /* Esto incluye padding y border en las dimensiones */
+}
+
 /* ......  ......*/
 
   .conteiner3 {
@@ -56,14 +64,7 @@
 
   }
   
-
-  .fotosGral{
-    width: 400px;
-    height: 300px;
-    border-radius: 10%;
  
-   }
-
 
 
   /*.................*/

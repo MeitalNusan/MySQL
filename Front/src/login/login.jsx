@@ -33,6 +33,7 @@ export const Login = () => {
 
     return (
         <div>
+            <br /><br /><br /><br /><br /><br />
             <h2>Login as Admin</h2>
             <div>
                 <input
@@ -54,6 +55,7 @@ export const Login = () => {
             <div>
                 <button onClick={handleLogin}>Login</button>
             </div>
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     );
 };

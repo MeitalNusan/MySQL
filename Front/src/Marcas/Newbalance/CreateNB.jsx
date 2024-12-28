@@ -43,8 +43,11 @@ export const CreateNB = () => {
     
     return(
     <div>
+         <div className="conteiner2"> 
+            <br /><br /><br /><br />
         <div className="card p-3">
             <div className="row">
+             
              <div className="col-10">
                 <input id="fileinput" onChange={selectedHandler}  className="form-control" type="file" name="image" />
              </div>
@@ -52,6 +55,7 @@ export const CreateNB = () => {
                 <button onClick={sendHandler}  type="button" className="btn btn-danger">Upload</button>
              </div>
            
+          </div>
           </div>
         </div>
     </div>
