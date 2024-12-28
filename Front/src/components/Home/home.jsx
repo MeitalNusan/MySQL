@@ -45,6 +45,8 @@ if(cargando){
       <> 
 
   <Carrousel apiEndpoint="http://localhost:8000/carrousel/"/>
+
+  <h1>HOLA</h1>
      
     <div >
    
