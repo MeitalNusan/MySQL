@@ -6,6 +6,7 @@ export const Nosotros = () => {
      
     return(
         <div>
+            <br /><br /><br /><br />
             <h1 className={styles.quienes}>QUIENES SOMOS?</h1>
             <p className={styles.nosotros}>Somos una pequeña empresa familiar desde hace 33 años, dedicada a ofrecer ropa de deportes de alta calidad, pensada para quienes buscan comodidad, estilo y rendimiento en sus entrenamientos y actividades deportivas. Ubicados en Barranqueras, provincia del Chaco, una pequeña ciudad del interior del país. Nuestra misión es proporcionar productos que acompañen a nuestros clientes en su día a día, desde los entrenamientos más exigentes hasta los momentos de descanso.
 

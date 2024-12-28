@@ -33,16 +33,26 @@ const fileUpload = multer({
 
 //TODAS LAS IMAGENES 
 
-router.get("/", async (req, res) => {
-    try {
-        const imgs = await Adidas.findAll()
-        res.json(imgs)
-
-    } catch (error) {
-        res.json({message:error.message})
-    }
+// Servir imagen desde la base de datos
+router.get("/image/:id", async (req, res) => {
+    const { id } = req.params;
     
+    try {
+        const image = await Adidas.findByPk(id);
+        if (!image) {
+            return res.status(404).json({ message: "No se encontró la imagen." });
+        }
+
+        // Establece el tipo de contenido
+        res.contentType(image.type); // Utiliza el tipo de imagen almacenado en la base de datos
+        res.send(image.data); // Envía el BLOB de la imagen
+
+    } catch (err) {
+        console.error("Error al obtener la imagen:", err);
+        res.status(500).send("Error del servidor: no se pudo obtener la imagen.");
+    }
 });
+
 
 router.get("/", async (req, res) => {
     try {

@@ -1,18 +1,59 @@
-.quienes{
-     
+/* Estilo para la clase .quienes */
+.quienes {
     padding: 50px 20px;
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    
     border-radius: 8px;
 }
 
-.nosotros{
-     font-size: 20px;
+/* Estilo para la clase .nosotros */
+.nosotros {
+    font-size: 20px;
     text-align: justify;
     color: black;
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 1110px;
- }
+}
+
+/* Consultas de medios para hacer la página responsive */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    .quienes {
+        padding: 30px 10px; /* Menos padding en dispositivos pequeños */
+    }
+
+    .nosotros {
+        font-size: 16px; /* Reducir el tamaño de fuente en pantallas más pequeñas */
+        margin-left: 10px; /* Ajustar los márgenes */
+        margin-right: 10px;
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    .quienes {
+        padding: 40px 15px; /* Ajustar padding para tabletas */
+    }
+
+    .nosotros {
+        font-size: 18px; /* Ajustar tamaño de texto */
+        margin-left: 15px; 
+        margin-right: 15px;
+    }
+}
+
+/* Para pantallas grandes (escritorios) */
+@media (min-width: 1200px) {
+    .quienes {
+        padding: 60px 30px; /* Más padding en pantallas grandes */
+    }
+
+    .nosotros {
+        font-size: 22px; /* Aumentar el tamaño de fuente */
+        margin-left: 20px; 
+        margin-right: 20px;
+    }
+}
