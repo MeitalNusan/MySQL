@@ -2,9 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../Home/cssHome.module.css";
 import { Spinner } from "../spinner/Spinner";
-import zapaNB from "../Images/imagenes/zapaNB.jpg"
-import lionel from "../Images/imagenes/lionel.jpg"
-import zapaOl from"../Images/imagenes/zapaOlymcomp.png"
+
 import { GetAllImg } from "../getImgs/getAllImg";
 import { FotosGral } from "../fotosGeneral/fotosGral";
 import { Mellis } from "../FotosMellis/MellisGral";

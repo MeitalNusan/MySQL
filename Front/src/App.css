@@ -7,7 +7,7 @@ html, body {
 
 /* Establece la imagen de fondo en el body */
 body {
-  background-image: url("../src/components/Images/imagenes/short.jpg");
+  background-image: url("/imagenes/short.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 0px;
