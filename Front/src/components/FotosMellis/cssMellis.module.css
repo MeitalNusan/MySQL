@@ -1,9 +1,25 @@
-.mellis{
-    display:flex
-;
-justify-content: center;
-  }
+.mellis {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  height: 80vh;  
+ }
 
-.fotoMelli{
-     height: 610px;
+.fotoMelli {
+  height: 610px;
+  max-width: 100%;  
+  object-fit: cover;  
+}
+
+
+@media (max-width: 768px) {
+  .fotoMelli {
+    height: 400px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .fotoMelli {
+    height: 300px; 
+  }
 }

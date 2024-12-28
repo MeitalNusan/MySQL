@@ -29,21 +29,19 @@
     color: white;
     border-radius: 4%;
     margin-top: 86px;
-
-
-
+    text-decoration: none;
  } 
 /* ......ADIDAS......*/
 
 .conteinerAdidas{
-  margin-top: 100px;
+  margin-top: 120px; /* Ajusta este valor según la altura de tu nav */
   height: auto;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 280px);  
   gap: 156px;
   padding: 20px;  
-  margin-left: 80px; 
+  margin-left: 80px;
 }
 /* ......  ......*/
 
@@ -140,3 +138,39 @@
   .cerrar{
     display: flex;
    }
+
+
+/* Media Query para móviles */
+@media (max-width: 768px) {
+  .conteinerAdidas {
+    grid-template-columns: 1fr;  /* 1 columna en pantallas móviles */
+    gap: 30px; /* Ajusta el espacio entre los elementos */
+    margin-left: 20px; /* Ajusta el margen en pantallas pequeñas */
+  }
+}
+
+/* Media Query para pantallas extra grandes (opcional, por si quieres más personalización) */
+@media (min-width: 1600px) {
+  .conteinerAdidas {
+    grid-template-columns: repeat(4, 280px); /* Más columnas en pantallas muy grandes */
+    gap: 100px; /* Más espacio entre elementos */
+  }
+}
+
+/*Media Query conteiner3*/
+
+@media (max-width: 1024px) {
+  .conteiner3 {
+    grid-template-columns: repeat(auto-fill, 220px);
+    gap: 60px;
+    padding: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .conteiner3 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
+}

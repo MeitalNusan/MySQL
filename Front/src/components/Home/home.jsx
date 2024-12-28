@@ -46,8 +46,8 @@ if(cargando){
 
   <Carrousel apiEndpoint="http://localhost:8000/carrousel/"/>
      
-    <div className={styles.zapa}>
-  <button className={styles.boton}> "DESCUBRÍ MAS →" </button>
+    <div >
+   
     <GetAllImg apiEndpoint="http://localhost:8000/homeImg/"/>
    </div>
     

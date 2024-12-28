@@ -75,6 +75,8 @@ export const Olympikus = () => {
     };
   
     return (
+        <> 
+        <br /><br /><br /><br />
         <div className={styles.conteinerAdidas}>
             {images.map((foto) => (
                 <div key={foto.id}>
@@ -98,5 +100,6 @@ export const Olympikus = () => {
                 </div>
             ))}
         </div>
+        </>
     );
 };

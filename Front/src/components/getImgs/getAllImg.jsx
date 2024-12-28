@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdDelete, MdOutlineEdit } from "react-icons/md";  
-import styles from "../Home/cssHome.module.css";
+import styles from "../getImgs/cssGetAll.module.css";
 import { deleteImgHome } from "../Delete/deleteImgHome";
 import { useAuth } from "../../Hooks/AuthContext";
 
@@ -52,7 +52,8 @@ export const GetAllImg = ({ apiEndpoint }) => {
     };
   
     return (
-      <div className="image-gallery">
+      <div className={styles.zapa}>
+        <button className={styles.boton}> "DESCUBRÍ MAS →" </button>
         {images.map((foto) => (
           <div key={foto.id}>
             <Link to="#">

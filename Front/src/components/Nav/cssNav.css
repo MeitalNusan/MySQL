@@ -1,51 +1,92 @@
-
-.nav{
-  position: relative;
-  width: 100%; 
-  background-color: rgba(0, 0, 0, 0.062);    /* z-index: 1000;   */
-  display: flex;
+/* NAV FIXED AT TOP */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Asegura que ocupe todo el ancho */
+   display: flex;
   justify-content: space-between;
-  padding: 26px ;   
+  padding: 26px;  /* Espaciado interno */
+  z-index: 1000;  /* Asegura que el nav esté sobre otros elementos */
+  box-shadow: none;  /* Elimina cualquier sombra si se desea */
+ 
 }
 
-.item1{
+
+.item1 {
   display: flex;
-  gap:100px;
+  gap: 100px;
   margin-right: 20px;
-  color:black;
-}
-.item2{
-  margin-left: 20px;  
-   
+  color: black;
 }
 
+.item2 {
+  margin-left: 20px;
+}
 
-.tituloHome{
-   text-decoration: none;
-  /* filter: grayscale(90%); */
-  color:aliceblue;
+.tituloHome {
+  text-decoration: none;
+  color: grey;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: oblique;
-  
+  font-size: 66px;
 }
 
-.tituloHome:hover{
-  color:brown;
+.tituloHome:hover {
+  color: rgba(0, 0, 0, 0.692);
   text-decoration: none;
- }
+}
 
-
-
-.botones{
-  text-decoration: none; 
-  font-size:larger;
+.nav .btn, 
+.nav .btn-dropdown-toggle {
+  color: rgba(255, 255, 255, 0.795);
+  text-decoration: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 10px;
-  color:white;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.botones:hover{
-  color:rgba(255, 255, 255, 0.384);
+.btn:hover, 
+.btn-dropdown-toggle:hover, 
+.dropdown-item:hover {
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
- }
- 
+}
+
+.hamburger-menu {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Menú de navegación en pantallas pequeñas */
+.nav .menu {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .nav .menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    letter-spacing: -0.5px;
+  }
+
+  .nav .menu.show {
+    display: flex;
+  }
+
+  .nav .btn, 
+  .nav .btn-dropdown-toggle,
+  .nav .dropdown-item {
+    font-size: 16px;
+  }
+}

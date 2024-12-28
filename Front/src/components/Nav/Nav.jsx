@@ -6,10 +6,12 @@ import { useAuth } from "../../Hooks/AuthContext";
 export const Nav = () => {
     const [marcasOpen, setMarcasOpen] = useState(false);
     const [crearOpen, setCrearOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false); // Estado para abrir/cerrar el menú en pantallas pequeñas
     const { user } = useAuth();
 
     const toggleMarcas = () => setMarcasOpen(!marcasOpen);
     const toggleCrear = () => setCrearOpen(!crearOpen);
+    const toggleMenu = () => setMenuOpen(!menuOpen);  // Función para alternar el menú
 
     // Cerrar los menús al hacer clic fuera de ellos
     useEffect(() => {
@@ -36,11 +38,17 @@ export const Nav = () => {
         <div className="nav">
             <div className="item2">
                 <Link className="tituloHome" to="/">
-                    <h1>ALWAYS</h1>
+                    ALWAYS
                 </Link>
             </div>
 
-            <div className="item1">
+            {/* Botón de menú hamburguesa */}
+            <div className="hamburger-menu" onClick={toggleMenu}>
+                &#9776; {/* Icono de menú hamburguesa */}
+            </div>
+
+            {/* Menú de navegación */}
+            <div className={`item1 menu ${menuOpen ? "show" : "hide"}`}>
                 {/* Si el usuario no está autenticado, muestra el botón Login */}
                 {!user && (
                     <div>
@@ -127,7 +135,7 @@ export const Nav = () => {
 
                 {/* Menú Nosotros */}
                 <div className="dropdown">
-                    <button className="btn btn-dropdown-toggle" type="button">
+                    <button className="btn btn-dropdown-toggle">
                         <Link className="dropdown-item" to="/nosotros">
                             Nosotros
                         </Link>
