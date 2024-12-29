@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../Home/cssHome.module.css";
 import { Spinner } from "../spinner/Spinner";
-
 import { GetAllImg } from "../getImgs/getAllImg";
 import { FotosGral } from "../fotosGeneral/fotosGral";
 import { Mellis } from "../FotosMellis/MellisGral";
