@@ -20,15 +20,15 @@ import { fileURLToPath } from 'url';
 
   
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 8000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'Front', 'build')));
-
+const dbImagesPath = path.join(__dirname, 'dbimages');
+app.use(express.static(dbImagesPath));
 
 
 app.use("/post", postRoutes);
