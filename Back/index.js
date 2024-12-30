@@ -23,12 +23,14 @@ const app = express();
 const port = 8000;
 
 const corsOptions = {
-    origin: 'https://my-sql-pnzb.vercel.app',  
+    origin: '*',  
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
     allowedHeaders: ['Content-Type', 'Authorization']  
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 
 app.use(express.json());
 const dbImagesPath = path.join(__dirname, 'dbimages');
