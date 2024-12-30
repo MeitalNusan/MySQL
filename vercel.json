@@ -1,27 +1,26 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "Back/index.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "Front/package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "Front/build"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "Back/index.js",
+      "use": "@vercel/node"   
+    },
+    {
+      "src": "Front/package.json",
+      "use": "@vercel/static-build",   
+      "config": {
+        "distDir": "Front/build"   
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/Back/index.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/Front/build/$1"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",        
+      "dest": "/Back/index.js"
+    },
+    {
+      "src": "/(.*)",           
+      "dest": "/Front/build/$1"
+    }
+  ]
+}
