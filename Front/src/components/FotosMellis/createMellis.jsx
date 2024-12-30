@@ -24,7 +24,7 @@ export const CreateMellis = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/mellisImg',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/mellisImg`,{
             method:"POST",
             body:formdata
         })

@@ -19,7 +19,7 @@ export const Fila = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/fila/`);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/fila`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);

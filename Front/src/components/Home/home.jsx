@@ -8,7 +8,7 @@ import { Mellis } from "../FotosMellis/MellisGral";
 import { Carrousel } from "../fotosCarrousel/carrousel";
 
  
-const API= `${import.meta.env.VITE_BACKEND_URL}/homeImg/`;
+const API= `${import.meta.env.VITE_BACKEND_URL}/homeImg`;
 
 export const Home = () => {
   const [file, setFile] = useState([]) 

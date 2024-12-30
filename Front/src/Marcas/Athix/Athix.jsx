@@ -19,7 +19,7 @@ export const Athix = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/athix/`);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/athix`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
