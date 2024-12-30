@@ -33,7 +33,7 @@ const fileUpload = multer({
 
 //TODAS LAS IMAGENES 
 
-router.get("/api/", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const imgs = await Carrousel.findAll()
         res.json(imgs)
