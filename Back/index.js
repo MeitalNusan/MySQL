@@ -22,15 +22,14 @@ import { fileURLToPath } from 'url';
 const app = express();
 const port = 8000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const corsOption = {
-    origin: process.env.FRONTEND_URL,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],  
-     
+const corsOptions = {
+    origin: 'https://my-sql-pnzb.vercel.app',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
+    allowedHeaders: ['Content-Type', 'Authorization']  
 };
 
-app.use(cors(corsOption));
+app.use(cors(corsOptions));
+
 app.use(express.json());
 const dbImagesPath = path.join(__dirname, 'dbimages');
 app.use(express.static(dbImagesPath));
