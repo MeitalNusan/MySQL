@@ -39,17 +39,17 @@ const dbImagesPath = path.join(__dirname, 'dbimages');
 app.use(express.static(dbImagesPath));
 
 
-app.use("/api/post", postRoutes);
-app.use("/api/img", imgRoutes);
-app.use("/api/homeImg", homeImgRoutes);
-app.use("/api/mellisImg", mellisImg);
-app.use("/api/adidas", adidas);
-app.use("/api/fila", fila);
-app.use("/api/olympikus", olympikus);
-app.use("/api/newb", newb);
-app.use("/api/athix", athix);
-app.use("/api/diadora", diadora);
-app.use("/api/carrousel", carrousel);
+app.use("/post", postRoutes);
+app.use("/img", imgRoutes);
+app.use("/homeImg", homeImgRoutes);
+app.use("/mellisImg", mellisImg);
+app.use("/adidas", adidas);
+app.use("/fila", fila);
+app.use("/olympikus", olympikus);
+app.use("/newb", newb);
+app.use("/athix", athix);
+app.use("/diadora", diadora);
+app.use("/carrousel", carrousel);
 
  const conexionDb = async () => {
     try {
