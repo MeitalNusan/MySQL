@@ -41,14 +41,34 @@ export const FotosGral = ({ apiEndpoint }) => {
     if (images.length === 0) {
         return <div>No images found</div>;
     }
-
-    const handleDelete = (id) => {
-        deleteImgHome(apiEndpoint, id, updateImagesList); 
+    const deleteImgHome = async (id) => {
+        try {
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/img/${id}`);
+            console.log("Image deleted:", response.data);
+        } catch (error) {
+            console.error("Error deleting image:", error);
+            throw error; 
+        }
     };
-
-    const updateImagesList = () => {
-        setImages((prevImages) => prevImages.filter(image => image.id !== id));
+     const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar esta imagen?");
+    
+        if (confirmDelete) {
+            try {
+                await deleteImgHome(id);  
+                updateImagesList(id);  
+                navigate("/")
+            } catch (error) {
+                console.error("Error deleting image:", error);
+            }
+        } else {
+            console.log("Imagen no eliminada.");
+         }
     };
+    const updateImagesList = (id) => {
+      setImages((prevImages) => prevImages.filter(image => image.id !== id));
+    };
+    
 
     return (
         <div className={styles.conteiner3}>
@@ -64,7 +84,7 @@ export const FotosGral = ({ apiEndpoint }) => {
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>
-                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                            <Link to={`/editGral/${foto.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />  
                             </Link>
                         </>

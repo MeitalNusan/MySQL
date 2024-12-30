@@ -22,7 +22,7 @@ export const CreateAdidas = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/adidas',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/adidas`,{
             method:"POST",
             body:formdata
         })

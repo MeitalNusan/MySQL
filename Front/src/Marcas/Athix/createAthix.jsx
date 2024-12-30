@@ -22,7 +22,7 @@ export const CreateAthix = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/athix',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/athix`,{
             method:"POST",
             body:formdata
         })

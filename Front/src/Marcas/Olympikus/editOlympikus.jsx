@@ -15,7 +15,7 @@ export const EditOlympikus  = () => {
     useEffect(() => {
         const getImgById = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/olympikus/${id}`);   
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/olympikus/${id}`);   
                 setTitulo(respuesta.data.name);  
                 setCargando(false);
             } catch (error) {
@@ -43,7 +43,7 @@ export const EditOlympikus  = () => {
             }
 
             
-            await axios.put(`http://localhost:8000/olympikus/${id}`, formData, {
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/olympikus/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",   
                 },

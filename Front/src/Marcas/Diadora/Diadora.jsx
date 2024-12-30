@@ -19,7 +19,7 @@ export const Diadora = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/diadora/");
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/diadora/`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -46,7 +46,7 @@ export const Diadora = () => {
   
      const deleteImgHome = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/diadora/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/diadora/${id}`);
             console.log("Image deleted:", response.data);
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -75,7 +75,7 @@ export const Diadora = () => {
   
     return (
         <> 
-        <br /><br /><br /><br />
+        <br /> 
         <div className={styles.conteinerAdidas}>
             {images.map((foto) => (
                 <div key={foto.id}>
@@ -91,7 +91,7 @@ export const Diadora = () => {
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>
-                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                            <Link to={`/editDiadora/${foto.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />  
                             </Link>
                         </>

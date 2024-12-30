@@ -15,7 +15,7 @@ export const EditAthix  = () => {
     useEffect(() => {
         const getImgById = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/athix/${id}`);   
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/athix/${id}`);   
                 setTitulo(respuesta.data.name);  
                 setCargando(false);
             } catch (error) {

@@ -24,7 +24,7 @@ export const CreateCarrousel = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/carrousel',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/carrousel`,{
             method:"POST",
             body:formdata
         })

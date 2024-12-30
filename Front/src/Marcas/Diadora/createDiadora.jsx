@@ -22,7 +22,7 @@ export const CreateDiadora = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/diadora',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/diadora`,{
             method:"POST",
             body:formdata
         })

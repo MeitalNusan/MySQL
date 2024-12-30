@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from './components/Home/home';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Layout } from './components/Layout';
-import { Images } from './components/Images/images';
-import { EditImg } from './components/Images/EditImg';
 import { EditGral } from './components/fotosGeneral/EditGral';
 import { EditDescub } from './components/getImgs/EditDescubrir';
 import { CreateGeneral } from './components/fotosGeneral/CreateGral';
@@ -45,20 +43,27 @@ const App = () => {
       <AuthProvider> 
         <BrowserRouter>
           <Routes>
-            <Route element={<Layout />}>
-              {/* <Route path="/img" element={<Images />} />
-              <Route path="/editImg/:id" element={<EditImg />} /> 
-               <Route path="/adminDash" element={<AdminDashboard />} /> */}
-
-            
-              {/* <Route path="/deleteImgHome/:id" element={<deleteImgHome/>} />
-              <Route path="/editHome/:id" element={<EditGral/>} />
-              <Route path="/editDescub/:id" element={<EditDescub/>} /> */}
-
+            <Route element={<Layout />}>                       
               <Route path="/" element={<Home />} />  
               <Route path="/login" element={<Login />} />
               <Route path="/nosotros" element={<Nosotros/>} />
               <Route path="/adidas" element={<Adidas/>} />
+              <Route 
+              path="/editDescub/:id"
+               element={
+                <PrivateRoute> 
+                  <EditDescub/>
+                </PrivateRoute>
+              } 
+              />
+              <Route 
+              path="/editGral/:id"
+               element={
+                <PrivateRoute> 
+                  <EditGral/>
+                </PrivateRoute>
+              } 
+              />
               <Route 
               path="/createMellis"
                element={

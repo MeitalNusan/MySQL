@@ -20,7 +20,7 @@ export const Adidas = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/adidas/");
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/adidas/`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -47,7 +47,7 @@ export const Adidas = () => {
   
      const deleteImgHome = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/adidas/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/adidas/${id}`);
             console.log("Image deleted:", response.data);
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -76,7 +76,7 @@ export const Adidas = () => {
   
     return (
         <> 
-        <br /><br /><br /><br />
+        <br />
 
         <div className={styles.conteinerAdidas}>
             {images.map((foto) => (

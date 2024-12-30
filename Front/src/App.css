@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   filter: grayscale(52%);
- }
+  }
 
 /* Establece la imagen de fondo en el body */
 body {
@@ -15,7 +15,7 @@ body {
   filter: grayscale(60%);
   height: 100%;
   margin: 0;
-}
+ }
   
 
 /* ..................NAV................... */

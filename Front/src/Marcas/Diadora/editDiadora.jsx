@@ -15,7 +15,7 @@ export const EditDiadora  = () => {
     useEffect(() => {
         const getImgById = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/diadora/${id}`);   
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/diadora/${id}`);   
                 setTitulo(respuesta.data.name);  
                 setCargando(false);
             } catch (error) {
@@ -43,7 +43,7 @@ export const EditDiadora  = () => {
             }
 
             
-            await axios.put(`http://localhost:8000/diadora/${id}`, formData, {
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/diadora/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",   
                 },

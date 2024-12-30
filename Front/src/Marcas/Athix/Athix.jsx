@@ -19,7 +19,7 @@ export const Athix = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/athix/");
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/athix/`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -46,7 +46,7 @@ export const Athix = () => {
   
      const deleteImgHome = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/athix/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/athix/${id}`);
             console.log("Image deleted:", response.data);
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -75,7 +75,7 @@ export const Athix = () => {
   
     return (
         <> 
-        <br /><br /><br /><br />
+        <br />
         <div className={styles.conteinerAdidas}>
             {images.map((foto) => (
                 <div key={foto.id}>
@@ -91,7 +91,7 @@ export const Athix = () => {
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>
-                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                            <Link to={`/editAthix/${foto.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />  
                             </Link>
                         </>

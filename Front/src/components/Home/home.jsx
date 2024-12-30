@@ -8,7 +8,7 @@ import { Mellis } from "../FotosMellis/MellisGral";
 import { Carrousel } from "../fotosCarrousel/carrousel";
 
  
-const API= "http://localhost:8000/homeImg/";
+const API= `${import.meta.env.VITE_BACKEND_URL}/homeImg/`;
 
 export const Home = () => {
   const [file, setFile] = useState([]) 
@@ -40,20 +40,19 @@ if(cargando){
 
     return (
       <> 
-
-  <Carrousel apiEndpoint="http://localhost:8000/carrousel/"/>
+   <Carrousel apiEndpoint={`${import.meta.env.VITE_BACKEND_URL}/carrousel`}/>
 
    
      
     <div >
    
-    <GetAllImg apiEndpoint="http://localhost:8000/homeImg/"/>
+    <GetAllImg apiEndpoint={`${import.meta.env.VITE_BACKEND_URL}/homeImg`}/>
    </div>
     
 
-   <Mellis apiEndpoint="http://localhost:8000/mellisImg/"/>
+   <Mellis apiEndpoint={`${import.meta.env.VITE_BACKEND_URL}/mellisImg`}/>
 
-    <FotosGral apiEndpoint="http://localhost:8000/img/"/>
+    <FotosGral apiEndpoint={`${import.meta.env.VITE_BACKEND_URL}/img`}/>
 
 
   

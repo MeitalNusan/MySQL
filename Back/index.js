@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import db from "./database/db.js"; // Asegúrate de que este archivo y configuración sean correctos
+import db from "./database/db.js";  
 import postRoutes from "./Routes/postRoutes.js";
 import imgRoutes from "./Routes/imgRoutes.js";
 import homeImgRoutes from "./Routes/homeImgRoutes.js";

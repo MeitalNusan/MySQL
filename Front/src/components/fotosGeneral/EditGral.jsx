@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from 'react-router-dom';  // Importamos useParams y useNavigate
-import { Spinner } from "../spinner/Spinner";
+import { useParams, useNavigate } from 'react-router-dom';   
+import { Spinner } from "../../components/spinner/Spinner";
+
 
 export const EditGral  = () => {
-    const { id } = useParams();  // Obtenemos el id desde la URL
-    const navigate = useNavigate();  // Usamos useNavigate para redirigir después de actualizar
+    const { id } = useParams();   
+    const navigate = useNavigate();   
     const [titulo, setTitulo] = useState("");
-    const [img, setImg] = useState(null);  // Para archivos, inicialízalo como null
+    const [img, setImg] = useState(null);   
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState("");
 
     useEffect(() => {
         const getImgById = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/img/${id}`);  // URL específica
-                setTitulo(respuesta.data.name);  // Asumiendo que el nombre de la imagen es 'name'
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/img/${id}`);   
+                setTitulo(respuesta.data.name);  
                 setCargando(false);
             } catch (error) {
                 console.error("Error al obtener la imagen:", error);
@@ -24,11 +25,11 @@ export const EditGral  = () => {
             }
         };
 
-        getImgById();  // Llamada para obtener los datos de la imagen por ID
+        getImgById();   
     }, [id]);
 
     if (cargando) {
-        return <Spinner />;  // Muestra el spinner mientras carga
+        return <Spinner />;  
     }
 
     const update = async (e) => {
@@ -38,18 +39,18 @@ export const EditGral  = () => {
             const formData = new FormData();
             formData.append("name", titulo);
             if (img) {
-                formData.append("image", img);  // Agrega el archivo al FormData
+                formData.append("image", img);   
             }
 
-            // Actualiza la imagen en la API
-            await axios.put(`http://localhost:8000/img/${id}`, formData, {
+            
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/img/${id}`, formData, {
                 headers: {
-                    "Content-Type": "multipart/form-data",  // Asegura que el servidor reconozca el FormData
+                    "Content-Type": "multipart/form-data",   
                 },
             });
 
             alert("Imagen actualizada con éxito!");
-            navigate('/');  // Redirige a la página principal después de actualizar
+            navigate('/');   
         } catch (error) {
             console.error("Error al actualizar la imagen:", error);
             setError("Error al actualizar la imagen. Inténtalo de nuevo más tarde.");
@@ -57,7 +58,7 @@ export const EditGral  = () => {
     };
 
     const handleFileChange = (e) => {
-        setImg(e.target.files[0]);  // Cambiar el archivo de la imagen
+        setImg(e.target.files[0]);   
     };
 
     return (
@@ -70,7 +71,7 @@ export const EditGral  = () => {
                     <input
                         type="text"
                         value={titulo}
-                        onChange={(e) => setTitulo(e.target.value)}  // Cambiar el título de la imagen
+                        onChange={(e) => setTitulo(e.target.value)}  
                         className="form-control"
                     />
                 </div>
@@ -78,7 +79,7 @@ export const EditGral  = () => {
                     <label className="form-label">Imagen</label>
                     <input
                         type="file"
-                        onChange={handleFileChange}  // Cambiar la imagen
+                        onChange={handleFileChange}  
                         className="form-control"
                     />
                 </div>

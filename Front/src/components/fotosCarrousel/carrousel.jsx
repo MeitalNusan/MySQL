@@ -41,13 +41,33 @@ export const Carrousel = ({ apiEndpoint }) => {
     return <div>No images found</div>;
   }
 
-  const handleDelete = (id) => {
-    deleteImgHome(apiEndpoint, id, updateImagesList); 
-  };
+  const deleteImgHome = async (id) => {
+    try {
+        const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/carrousel/${id}`);
+        console.log("Image deleted:", response.data);
+    } catch (error) {
+        console.error("Error deleting image:", error);
+        throw error; 
+    }
+};
+ const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar esta imagen?");
 
-  const updateImagesList = (id) => {
-    setImages((prevImages) => prevImages.filter(image => image.id !== id));
-  };
+    if (confirmDelete) {
+        try {
+            await deleteImgHome(id);  
+            updateImagesList(id);  
+            navigate("/")
+        } catch (error) {
+            console.error("Error deleting image:", error);
+        }
+    } else {
+        console.log("Imagen no eliminada.");
+     }
+};
+const updateImagesList = (id) => {
+  setImages((prevImages) => prevImages.filter(image => image.id !== id));
+};
 
   return (
     <section className={styles.carousel}>
@@ -69,7 +89,7 @@ export const Carrousel = ({ apiEndpoint }) => {
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>
-                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                            <Link to={`/editCarrousel/${foto.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />  
                             </Link>
                         </div>

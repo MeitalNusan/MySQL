@@ -14,7 +14,7 @@ export const EditCarrousel  = () => {
     useEffect(() => {
         const getImgById = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/carrousel/${id}`);  // URL específica
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/carrousel/${id}`);  // URL específica
                 setTitulo(respuesta.data.name);  // Asumiendo que el nombre de la imagen es 'name'
                 setCargando(false);
             } catch (error) {
@@ -42,7 +42,7 @@ export const EditCarrousel  = () => {
             }
 
             // Actualiza la imagen en la API
-            await axios.put(`http://localhost:8000/carrousel/${id}`, formData, {
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/carrousel/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",  // Asegura que el servidor reconozca el FormData
                 },

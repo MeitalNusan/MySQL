@@ -14,7 +14,7 @@ export const EditDescub = () => {
     useEffect(() => {
         const getImg = async () => {
             try {
-                const respuesta = await axios.get(`http://localhost:8000/homeImg/${id}`);  // URL específica
+                const respuesta = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/homeImg/${id}`);  // URL específica
                 setTitulo(respuesta.data.name);  // Asumiendo que el nombre de la imagen es 'name'
                 setCargando(false);
             } catch (error) {
@@ -42,7 +42,7 @@ export const EditDescub = () => {
             }
 
             // Actualiza la imagen en la API
-            await axios.put(`http://localhost:8000/homeImg/${id}`, formData, {
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/homeImg/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",  
                 },

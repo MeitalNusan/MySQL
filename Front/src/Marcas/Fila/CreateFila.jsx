@@ -22,7 +22,7 @@ export const CreateFila = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/fila',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/fila`,{
             method:"POST",
             body:formdata
         })
@@ -42,7 +42,7 @@ export const CreateFila = () => {
     
     return(
     <div className="conteiner2">
-        <br /><br /><br /><br />
+        <br /> 
         <div className="card p-3">
             <div className="row">
              <div className="col-10">

@@ -24,7 +24,7 @@ export const CreateGeneral= () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/img',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/img`,{
             method:"POST",
             body:formdata
         })
@@ -53,14 +53,6 @@ export const CreateGeneral= () => {
              <div className="col-2">
                 <button onClick={sendHandler}  type="button" className="btn btn-danger">Upload</button>
              </div>
-             {/* <div>
-             {file.map((img=>(
-                            <p key={img.id}>
-                                 <p>{img.name}</p>
-                                
-                            </p>
-                        )))}
-             </div> */}
           </div>
         </div>
     </div>

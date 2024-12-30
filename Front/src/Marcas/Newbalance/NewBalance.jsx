@@ -18,7 +18,7 @@ export const NewBalance = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/newb/");
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/newb/`);
                 setImages(response.data);  
             } catch (error) {
                 console.error("Error fetching images:", error);
@@ -45,7 +45,7 @@ export const NewBalance = () => {
   
      const deleteImgHome = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/newb/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/newb/${id}`);
             console.log("Image deleted:", response.data);
         } catch (error) {
             console.error("Error deleting image:", error);
@@ -90,7 +90,7 @@ export const NewBalance = () => {
                             <button className="btn btn-danger" onClick={() => handleDelete(foto.id)}>
                                 <MdDelete /> 
                             </button>
-                            <Link to={`/editAdidas/${foto.id}`} className="btn btn-primary">
+                            <Link to={`/editNB/${foto.id}`} className="btn btn-primary">
                                 <MdOutlineEdit />  
                             </Link>
                         </>

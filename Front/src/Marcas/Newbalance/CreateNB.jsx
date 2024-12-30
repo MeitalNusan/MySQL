@@ -23,7 +23,7 @@ export const CreateNB = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/newb',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/newb`,{
             method:"POST",
             body:formdata
         })

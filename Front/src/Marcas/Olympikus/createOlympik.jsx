@@ -22,7 +22,7 @@ export const CreateOlympikus = () => {
         const formdata =new FormData()
         formdata.append("image", file) 
 
-        fetch('http://localhost:8000/olympikus',{
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/olympikus`,{
             method:"POST",
             body:formdata
         })
