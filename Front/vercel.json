@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "Front/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "Front/build"
@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/Front/build/$1"
+      "dest": "/"
     }
   ]
 }
