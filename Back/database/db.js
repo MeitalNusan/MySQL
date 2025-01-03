@@ -1,12 +1,12 @@
-import {Sequelize} from "sequelize"
-import mysql2 from "mysql2"
+import { Sequelize } from "sequelize";
+import mysql2 from "mysql2";
 
-//nombre de la db, user, contraseña, donde esta alojado, lenguaje, puerto//
-const db = new Sequelize("db_always", "root","",{
-    host: "localhost",
-    dialect:mysql2, 
-    port:3306
-})
 
-export default db
- 
+const db = new Sequelize("db_always", "root", "", {
+  host: "localhost",
+  dialect: "mysql", 
+  port: 3306,
+  dialectModule: mysql2, 
+});
+
+export default db;
