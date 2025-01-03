@@ -1,10 +1,10 @@
 import {Sequelize} from "sequelize"
-import mysql2 from 'mysql2';
+import mysql from "mysql"
 
 //nombre de la db, user, contraseña, donde esta alojado, lenguaje, puerto//
 const db = new Sequelize("db_always", "root","",{
     host: "localhost",
-    dialectModule: mysql2,
+    dialect:"mysql",
     port:3306
 })
 
