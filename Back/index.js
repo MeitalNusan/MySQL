@@ -22,6 +22,8 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 8000
+ 
+
 
 const corsOptions = {
     origin: '*',  
