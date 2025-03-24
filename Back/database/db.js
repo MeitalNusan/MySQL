@@ -1,19 +1,23 @@
 import { Sequelize } from "sequelize";
 import mysql2 from "mysql2";
+import dotenv from "dotenv";
 import {DB_HOST, DB_NAME,DB_PASSWORD,DB_USER,DB_PORT, MYSQL_PUBLIC_URL} from "../config.js"
 
+dotenv.config();
 
-const db = new Sequelize("db_always", "root", "", {
-  host:DB_HOST,
-  user:DB_USER,
-  password: DB_PASSWORD,
-  port: DB_PORT,
-  database: DB_NAME,
-  dialect: "mysql",   
-  url: MYSQL_PUBLIC_URL
+const db = new Sequelize(process.env.MYSQL_URL || {
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 3306,
+  dialect: "mysql",
+  dialectModule: mysql2,
+  logging: false,
 });
 
 export default db;
+
 
 
 
