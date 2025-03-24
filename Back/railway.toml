@@ -1,5 +1,4 @@
 [build]
 builder = "NIXPACKS"
-
-[start]
-cmd = "node index.js"
+buildCommand = "npm install"
+startCommand = "node index.js"
