@@ -15,32 +15,54 @@ import carrousel from "./Routes/carrousel.js";
 import path from "path";
 import { fileURLToPath } from 'url';
 
-
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 8000
- 
+const port = process.env.PORT || 8000;
 
-
+// ✅ CORS Configurado correctamente
 const corsOptions = {
     origin: '*',  
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],  
     allowedHeaders: ['Content-Type', 'Authorization']  
 };
 
-app.use(cors({ origin: "https://railway.app" }));
+app.use(cors(corsOptions));  // ✅ Usa las opciones correctamente
 app.options('*', cors(corsOptions));
 
 app.use(express.json());
 
-
+// ✅ Asegurar que la carpeta de imágenes existe antes de servir estáticos
 const dbImagesPath = path.join(__dirname, 'dbimages');
-app.use(express.static(dbImagesPath));
+import fs from 'fs';
+if (fs.existsSync(dbImagesPath)) {
+    app.use(express.static(dbImagesPath));
+} else {
+    console.warn(`⚠️ Advertencia: La carpeta 'dbimages' no existe.`);
+}
 
+// ✅ Conectar a la base de datos antes de levantar el servidor
+const startServer = async () => {
+    try {
+        await db.authenticate();
+        console.log("✅ Conectado a la base de datos");
 
+        // ✅ Iniciar el servidor solo si la conexión es exitosa
+        app.listen(port, () => {
+            console.log(`🚀 Server funcionando en el puerto ${port}`);
+        });
+
+    } catch (error) {
+        console.error(`❌ No se pudo conectar a la base de datos: ${error}`);
+        process.exit(1); // Terminar el proceso si falla la conexión
+    }
+};
+
+// 🔹 Iniciar el servidor correctamente
+startServer();
+
+// ✅ Rutas
 app.use("/post", postRoutes);
 app.use("/img", imgRoutes);
 app.use("/homeImg", homeImgRoutes);
@@ -52,17 +74,3 @@ app.use("/newb", newb);
 app.use("/athix", athix);
 app.use("/diadora", diadora);
 app.use("/carrousel", carrousel);
-
- const conexionDb = async () => {
-    try {
-        await db.authenticate();  
-        console.log("Conectado a la db");
-    } catch (error) {
-        console.log(`No se pudo conectar por: ${error}`);
-    }
-};
-
- app.listen(port, () => {
-    conexionDb();
-    console.log(`Server funcionando en el puerto ${port}`);
-});
