@@ -5,8 +5,8 @@ import {DB_HOST,NAME_DB,DB_PASSWORD,DB_USER,DB_PORT, MYSQL_PUBLIC_URL} from "../
 
 dotenv.config();
 
-const db = new Sequelize(process.env.MYSQL_URL || {
-  database: process.env.NAME_DB,
+const db = new Sequelize({
+  database: process.env.NAME_DB,  
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD || "contraseñaAdmin",
   host: process.env.DB_HOST,
@@ -14,9 +14,7 @@ const db = new Sequelize(process.env.MYSQL_URL || {
   dialect: "mysql",
   dialectModule: mysql2,
   logging: false,
-  database: "db_always" 
 });
-
 export default db;
 
 
