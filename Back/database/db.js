@@ -7,7 +7,7 @@ dotenv.config();
 
 const db = new Sequelize(process.env.MYSQL_URL || {
   database: process.env.DB_NAME,
-  username: process.env.DB_USER,
+  username: process.env.MYSQLUSER,
   password: process.env.DB_PASSWORD || "contraseñaAdmin",
   host: process.env.DB_HOST,
   port: process.env.DB_PORT || 3306,
