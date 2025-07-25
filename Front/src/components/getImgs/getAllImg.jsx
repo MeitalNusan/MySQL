@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdDelete, MdOutlineEdit } from "react-icons/md";  
 import styles from "../getImgs/cssGetAll.module.css";
-import { deleteImgHome } from "../Delete/deleteImgHome";
+// import { deleteImgHome } from "../Delete/deleteImgHome";
 import { useAuth } from "../../Hooks/AuthContext";
 
 

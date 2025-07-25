@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import fs from "fs";
 import Adidas from "../models/adidas.js"; 
-import Op from "sequelize"
+import { Op } from "sequelize";
 
 const router = express.Router();
 
