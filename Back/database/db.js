@@ -1,21 +1,41 @@
 import { Sequelize } from "sequelize";
-import mysql2 from "mysql2";
+// import mysql2 from "mysql2";
 import dotenv from "dotenv";
-import {DB_HOST,DB_NAME,DB_PASSWORD,DB_USER,DB_PORT, MYSQL_PUBLIC_URL} from "../config.js"
+// import {DB_HOST,DB_NAME,DB_PASSWORD,DB_USER,DB_PORT, MYSQL_PUBLIC_URL} from "../config.js"
 
+ 
 dotenv.config();
 
-const db = new Sequelize({
-  database: process.env.DB_NAME,  
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD || "contraseñaAdmin",
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT || 3306,
-  dialect: "mysql",
-  dialectModule: mysql2,
-  logging: false,
-});
+const db = new Sequelize(
+  process.env.NAME_DB,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: "mysql",
+    logging: false,
+  }
+)
+
 export default db;
+
+
+//////////////////////////////////////////////////////////////////////
+
+// const db = new Sequelize({
+//   database: process.env.DB_NAME,  
+//   username: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD || "contraseñaAdmin",
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT || 3306,
+//   dialect: "mysql",
+//   dialectModule: mysql2,
+//   logging: false,
+// });
+// export default db;
+
+/////////////////////////////////////////////////////////////////////////
 
 
 
